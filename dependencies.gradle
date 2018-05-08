@@ -25,6 +25,10 @@ ext.versions = [
 
         rxJava                 : '2.1.13',
         rxAndroid              : '2.0.2',
+
+        jUnit                  : '4.12',
+        testRunner             : '1.0.2',
+        testEspresso           : '3.0.2',
 ]
 
 ext.gradlePlugins = [
@@ -56,4 +60,10 @@ ext.libraries = [
 
         rxJava                  : "io.reactivex.rxjava2:rxjava:$versions.rxJava",
         rxAndroid               : "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid",
+
+        jUnit                   : "junit:junit:$versions.jUnit",
+        testRunner              : "com.android.support.test:runner:$versions.testRunner",
+        testEspresso            : "com.android.support.test.espresso:espresso-core:$versions.testEspresso",
+
+
 ]
