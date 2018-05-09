@@ -3,19 +3,19 @@
 
     <!-- Fonts -->
     <style name="TextAppearance.Base.Regular" parent="android:TextAppearance">
-        <item name="fontPath">@string/font_regular_path</item>
+
     </style>
 
     <style name="TextAppearance.Base.Medium" parent="android:TextAppearance">
-        <item name="fontPath">@string/font_medium_path</item>
+
     </style>
 
     <style name="TextAppearance.Base.Light" parent="android:TextAppearance">
-        <item name="fontPath">@string/font_light_path</item>
+
     </style>
 
     <style name="TextAppearance.Base.Thin" parent="android:TextAppearance">
-        <item name="fontPath">@string/font_thin_path</item>
+
     </style>
 
     <!-- Display 4 TextAppearance -->
