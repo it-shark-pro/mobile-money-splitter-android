@@ -1,7 +1,8 @@
-package pro.itshark.moneysplitter
+package pro.itshark.moneysplitter.view.ui.events
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import pro.itshark.moneysplitter.R
 
 class EventsActivity : AppCompatActivity() {
 
