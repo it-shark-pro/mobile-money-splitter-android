@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion versions.compileSdk
@@ -35,7 +36,7 @@ dependencies {
     implementation libraries.rxAndroid
 
     implementation libraries.dagger
-    annotationProcessor libraries.daggerCompiler
+    kapt libraries.daggerCompiler
 
     implementation libraries.retrofit
     implementation libraries.retrofitGsonConverter
