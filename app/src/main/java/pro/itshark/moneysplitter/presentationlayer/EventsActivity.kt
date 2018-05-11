@@ -1,4 +1,4 @@
-package pro.itshark.moneysplitter.view.ui.events
+package pro.itshark.moneysplitter.presentationlayer
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
