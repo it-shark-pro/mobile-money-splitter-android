@@ -2,9 +2,9 @@ buildscript {
     apply from: 'dependencies.gradle'
 
     repositories {
+        mavenCentral()
         google()
         jcenter()
-        mavenCentral()
     }
     dependencies {
         classpath gradlePlugins.gradleVersion
