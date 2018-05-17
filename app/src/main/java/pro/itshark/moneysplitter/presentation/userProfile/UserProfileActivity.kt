@@ -7,8 +7,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import pro.itshark.moneysplitter.*
 import pro.itshark.moneysplitter.databinding.ActivityUserProfileBinding
-import pro.itshark.moneysplitter.utility.PreferenceHelper.defaultSharedPreferences
-import pro.itshark.moneysplitter.utility.PreferenceHelper.set
+import pro.itshark.moneysplitter.common.PreferenceHelper.defaultSharedPreferences
+import pro.itshark.moneysplitter.common.PreferenceHelper.set
 import javax.inject.Inject
 
 class UserProfileActivity : AppCompatActivity() {
@@ -37,9 +37,9 @@ class UserProfileActivity : AppCompatActivity() {
     private fun initPref() {
         val pref = defaultSharedPreferences(this)
 
-        pref[PrefKey.NAME] = "Yauheni"
-        pref[PrefKey.SURNAME] = "Vasileuski"
-        pref[PrefKey.EMAIL] = "email"
-        pref[PrefKey.IMAGE_URL] = "https://cdn.img.inosmi.ru/images/24126/31/241263151.jpg"
+        pref[PreferenceKey.NAME] = "Yauheni"
+        pref[PreferenceKey.SURNAME] = "Vasileuski"
+        pref[PreferenceKey.EMAIL] = "email"
+        pref[PreferenceKey.IMAGE_URL] = "https://cdn.img.inosmi.ru/images/24126/31/241263151.jpg"
     }
 }

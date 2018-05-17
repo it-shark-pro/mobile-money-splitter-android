@@ -1,8 +1,9 @@
-package pro.itshark.moneysplitter.utility
+package pro.itshark.moneysplitter.common
 
 import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
+import pro.itshark.moneysplitter.EMPTY_STRING
 
 object PreferenceHelper {
 
@@ -29,7 +30,7 @@ object PreferenceHelper {
     }
 
     inline operator fun <reified T : Any> SharedPreferences.get(key: String, defValue: T? = null): T = when (T::class) {
-        String::class -> getString(key, defValue as? String ?: "") as T
+        String::class -> getString(key, defValue as? String ?: EMPTY_STRING) as T
         Int::class -> getInt(key, defValue as? Int ?: 0) as T
         Long::class -> getLong(key, defValue as? Long ?: 0) as T
         Float::class -> getFloat(key, defValue as? Float ?: 0F) as T

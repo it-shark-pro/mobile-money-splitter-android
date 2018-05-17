@@ -10,6 +10,5 @@ data class UserModel(
         val balance: Float,
         val token: String,
         val imageUrl: String,
-        val backgroundImageUrl: String,
-        val friends: String
+        val backgroundImageUrl: String
 )

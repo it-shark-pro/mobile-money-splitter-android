@@ -5,6 +5,7 @@ import android.databinding.Bindable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import pro.itshark.moneysplitter.BR
+import pro.itshark.moneysplitter.EMPTY_STRING
 import pro.itshark.moneysplitter.domain.UserUseCases
 
 class UserProfileViewModel(private val userUseCases: UserUseCases) : BaseObservable() {
@@ -12,13 +13,13 @@ class UserProfileViewModel(private val userUseCases: UserUseCases) : BaseObserva
     private var userModel: UserModel? = null
 
     @Bindable
-    fun getName(): String = userModel?.name ?: ""
+    fun getName(): String = userModel?.name ?: EMPTY_STRING
 
     @Bindable
-    fun getSurname(): String = userModel?.surname ?: ""
+    fun getSurname(): String = userModel?.surname ?: EMPTY_STRING
 
     @Bindable
-    fun getImageUrl(): String = userModel?.imageUrl ?: ""
+    fun getImageUrl(): String = userModel?.imageUrl ?: EMPTY_STRING
 
     fun init() {
         userUseCases.getUserInfo()

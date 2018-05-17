@@ -12,6 +12,5 @@ data class UserEntry(
         @SerializedName("Ballance") val balance: Float,
         @SerializedName("Token") val token: String,
         @SerializedName("ImageUrl") val imageUrl: String,
-        @SerializedName("BackgroundImageUrl") val backgroundImageUrl: String,
-        @SerializedName("Friends") val friends: String
+        @SerializedName("BackgroundImageUrl") val backgroundImageUrl: String
 )

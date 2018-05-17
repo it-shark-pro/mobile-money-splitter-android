@@ -2,7 +2,7 @@ package pro.itshark.moneysplitter
 
 const val BASE_URL = "https://moneytransfer.azurewebsites.net/"
 
-object PrefKey {
+object PreferenceKey {
     const val ID = "id"
     const val NAME = "name"
     const val SURNAME = "surname"
@@ -13,5 +13,6 @@ object PrefKey {
     const val TOKEN = "token"
     const val IMAGE_URL = "image_url"
     const val BACKGROUND_IMAGE_URL = "background image url"
-    const val FRIENDS = "friends"
 }
+
+const val EMPTY_STRING = ""

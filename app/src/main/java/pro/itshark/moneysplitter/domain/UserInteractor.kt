@@ -18,8 +18,7 @@ class UserInteractor(private val userRepository: UserRepository) : UserUseCases 
                         user.balance,
                         user.token,
                         user.imageUrl,
-                        user.backgroundImageUrl,
-                        user.friends
+                        user.backgroundImageUrl
                 )
             }
 }
