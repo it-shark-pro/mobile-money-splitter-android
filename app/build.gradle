@@ -24,6 +24,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -41,6 +45,9 @@ dependencies {
     implementation libraries.retrofit
     implementation libraries.retrofitGsonConverter
     implementation libraries.retrofitAdapter
+
+    implementation libraries.glide
+    kapt libraries.glideCompiler
 
     testImplementation libraries.jUnit
     androidTestImplementation libraries.testRunner
