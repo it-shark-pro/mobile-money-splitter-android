@@ -1,17 +1,17 @@
 package pro.itshark.moneysplitter.di
 
-import android.app.Application
 import dagger.Component
-import pro.itshark.moneysplitter.App
-import pro.itshark.moneysplitter.di.modules.NetworkModule
-import pro.itshark.moneysplitter.model.api.Api
-import pro.itshark.moneysplitter.presentation.EventsActivity
+import pro.itshark.moneysplitter.di.modules.*
+import pro.itshark.moneysplitter.presentation.login.LoginActivity
+import pro.itshark.moneysplitter.presentation.login.LoginFragment
+import pro.itshark.moneysplitter.presentation.login.LoginViewModel
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [NetworkModule::class])
-interface AppComponent {
-    fun inject(api: Api)
+@Component(modules = [(NetworkModule::class), (UseCasesModule::class), (ApplicationModule::class), (ViewModelModule::class), (RepositoryModule::class)])
 
-    fun inject(eventsActivity: EventsActivity)
+interface AppComponent {
+
+    fun inject(loginViewModel: LoginViewModel)
+    fun inject(loginFragment: LoginFragment)
 }

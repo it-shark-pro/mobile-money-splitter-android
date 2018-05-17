@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import pro.itshark.moneysplitter.BASE_URL
 import pro.itshark.moneysplitter.model.api.Api
+import pro.itshark.moneysplitter.presentation.login.LoginViewModel
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory

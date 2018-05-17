@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MoneySplitter.iml" filepath="$PROJECT_DIR$/MoneySplitter.iml" />
+      <module fileurl="file://C:\AndroidStudioProject\MoneySplitter\mobile-money-splitter-android\MoneySplitter.iml" filepath="C:\AndroidStudioProject\MoneySplitter\mobile-money-splitter-android\MoneySplitter.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mobile-money-splitter-android.iml" filepath="$PROJECT_DIR$/mobile-money-splitter-android.iml" />
       <module fileurl="file://$PROJECT_DIR$/ui/ui.iml" filepath="$PROJECT_DIR$/ui/ui.iml" />
     </modules>
   </component>
