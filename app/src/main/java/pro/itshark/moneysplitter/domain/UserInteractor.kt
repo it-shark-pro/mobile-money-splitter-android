@@ -1,28 +1,22 @@
 package pro.itshark.moneysplitter.domain
 
-import android.util.Log
 import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-import pro.itshark.moneysplitter.model.pojo.User
+import pro.itshark.moneysplitter.model.pojo.UserEntry
 import pro.itshark.moneysplitter.model.repository.UserRepository
-import pro.itshark.moneysplitter.presentation.login.LoginUserViewModel
-import pro.itshark.moneysplitter.presentation.registration.RegisterUserViewModel
 
 class UserInteractor(private val userRepository: UserRepository) : UserUseCases {
-    override fun login(credits: User): Observable<LoginUserViewModel>{
-        return userRepository.login(credits)
-                .map { userResponse -> userResponse.body()}
-                .map { user ->
-                    Log.d("TestPishLogin", "user = " +user.email)
+    override fun login(email: String, password: String): Observable<UserEntry>{
+        return userRepository.login(email, password)
+        //.updateUserData
+
+/*                    Log.d("TestPishLogin", "user = " +user.email)
                     Log.d("TestPishLogin", "password = " +user.password)
-                    LoginUserViewModel(user.email, user.password!!)}
+                    LoginUserViewModel(user.email, user.password!!)}*/
     }
 
-    override fun register(credits: User): Observable<RegisterUserViewModel> {
+/*    override fun register(credits: UserEntry): Observable<UserEntry> {
         return userRepository.register(credits)
-                .map { userResponse -> userResponse.body() }
-                .map { user ->
+*//*                .map { user ->
                     RegisterUserViewModel(user.password!!,
                             user.image,
                             user.background,
@@ -31,6 +25,8 @@ class UserInteractor(private val userRepository: UserRepository) : UserUseCases 
                             user.surname,
                             user.phoneNumber,
                             user.creditCardNumber)
-                }
-    }
+                }*//*
+    }*/
+
+
 }

@@ -2,16 +2,16 @@ package pro.itshark.moneysplitter.model.repository
 
 import io.reactivex.Observable
 import pro.itshark.moneysplitter.model.api.Api
-import pro.itshark.moneysplitter.model.pojo.User
+import pro.itshark.moneysplitter.model.pojo.UserEntry
 import retrofit2.Response
 
 class UserDownloader(private val api: Api): UserRepository {
 
-    override fun login(user: User): Observable<Response<User>> {
-        return api.login(user)
+    override fun login(email: String, password: String): Observable<UserEntry> {
+        return api.login(email, password)
     }
 
-    override fun register(user: User): Observable<Response<User>> {
-        return api.register(user)
+    override fun register(userEntry: UserEntry): Observable<UserEntry> {
+        return api.register(userEntry)
     }
 }

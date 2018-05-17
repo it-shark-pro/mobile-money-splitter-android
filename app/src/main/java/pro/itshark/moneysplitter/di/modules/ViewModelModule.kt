@@ -4,19 +4,16 @@ import android.arch.lifecycle.ViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
+import dagger.Provides
 import dagger.multibindings.IntoMap
-import pro.itshark.moneysplitter.presentation.login.LoginViewModel
+import pro.itshark.moneysplitter.presentation.regLogin.login.LoginViewModel
 import kotlin.reflect.KClass
 
-@Target(AnnotationTarget.FUNCTION)
-@Retention(AnnotationRetention.RUNTIME)
-@MapKey
-internal annotation class ViewModelKey(val value: KClass<out ViewModel>)
+@Module(includes = [(ApplicationModule::class), (UseCasesModule::class)]
+class ViewModelModule {
 
-@Module
-abstract class ViewModelModule {
-    @Binds
-    @IntoMap
-    @ViewModelKey(LoginViewModel::class)
-    abstract fun bindLoginViewModel(viewModel: LoginViewModel) : ViewModel
+    @Provides
+    fun bindLoginViewModel(viewModel: LoginViewModel) : ViewModel {
+        return LoginViewModel()
+    }
 }

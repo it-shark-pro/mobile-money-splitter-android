@@ -1,15 +1,18 @@
 package pro.itshark.moneysplitter.model.api
 
 import io.reactivex.Observable
-import pro.itshark.moneysplitter.model.pojo.User
+import pro.itshark.moneysplitter.model.pojo.UserEntry
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
 interface Api {
     @POST("session/register")
-    fun register(@Body user: User): Observable<Response<User>>
+    fun register(@Body user: UserEntry): Observable<UserEntry>
 
+    @FormUrlEncoded
     @POST("session/signin")
-    fun login(@Body user: User): Observable<Response<User>>
+    fun login(@Field("Email") email: String, @Field("Password") password: String): Observable<UserEntry>
 }

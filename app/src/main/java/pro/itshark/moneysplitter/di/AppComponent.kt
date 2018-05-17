@@ -2,9 +2,8 @@ package pro.itshark.moneysplitter.di
 
 import dagger.Component
 import pro.itshark.moneysplitter.di.modules.*
-import pro.itshark.moneysplitter.presentation.login.LoginActivity
-import pro.itshark.moneysplitter.presentation.login.LoginFragment
-import pro.itshark.moneysplitter.presentation.login.LoginViewModel
+import pro.itshark.moneysplitter.presentation.regLogin.login.LoginFragment
+import pro.itshark.moneysplitter.presentation.regLogin.login.LoginViewModel
 import javax.inject.Singleton
 
 @Singleton

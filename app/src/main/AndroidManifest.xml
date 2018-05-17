@@ -15,7 +15,7 @@
 
         <activity android:name=".presentation.EventsActivity"/>
 
-        <activity android:name=".presentation.login.LoginActivity">
+        <activity android:name="pro.itshark.moneysplitter.presentation.regLogin.RegLoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

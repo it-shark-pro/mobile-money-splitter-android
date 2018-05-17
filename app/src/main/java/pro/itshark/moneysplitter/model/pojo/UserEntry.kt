@@ -2,7 +2,7 @@ package pro.itshark.moneysplitter.model.pojo
 
 import com.google.gson.annotations.SerializedName
 
-data class User(
+data class UserEntry(
         @SerializedName("Password") val password : String?,
         @SerializedName("ImageBase64String") val image: String,
         @SerializedName("BackgroundImageBase64String") val background: String,
