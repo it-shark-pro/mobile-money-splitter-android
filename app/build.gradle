@@ -24,6 +24,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -36,6 +40,7 @@ dependencies {
     implementation libraries.rxAndroid
 
     implementation libraries.dagger
+    implementation libraries.daggerSupport
     kapt libraries.daggerCompiler
 
     implementation libraries.retrofit
@@ -45,4 +50,7 @@ dependencies {
     testImplementation libraries.jUnit
     androidTestImplementation libraries.testRunner
     androidTestImplementation libraries.testEspresso
+
+    implementation "android.arch.lifecycle:extensions:1.1.1"
+    implementation "android.arch.lifecycle:viewmodel:1.1.1"
 }
