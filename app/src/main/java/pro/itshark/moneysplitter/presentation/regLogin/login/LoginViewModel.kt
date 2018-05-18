@@ -4,15 +4,14 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.util.Log
 import io.reactivex.Scheduler
-import pro.itshark.moneysplitter.di.modules.SCHEDULER_IO
-import pro.itshark.moneysplitter.di.modules.SCHEDULER_MAIN_THREAD
 import pro.itshark.moneysplitter.domain.UserUseCases
 import pro.itshark.moneysplitter.model.pojo.UserEntry
 import javax.inject.Inject
-import javax.inject.Named
 
-class LoginViewModel
-@Inject constructor(private val userUseCases: UserUseCases, @Named(SCHEDULER_IO) val subscribeOnScheduler:Scheduler, @Named(SCHEDULER_MAIN_THREAD) val observeOnScheduler: Scheduler) : ViewModel() {
+class LoginViewModel(private val userUseCases: UserUseCases, private val subscribeOnScheduler: Scheduler, private val observeOnScheduler: Scheduler, private val loginActions: LoginActions): ViewModel() {
+
+/*    @Inject
+    lateinit var loginActions: LoginActions*/
 
     val stateLiveData = MutableLiveData<LoginScreenState>()
 
@@ -23,15 +22,13 @@ class LoginViewModel
                 .subscribe(this::onLoginSucces, this::onError)
     }
 
-    /*private fun register(credits: UserEntry) {
-        userUseCases.register(credits)
-                .subscribeOn(subscribeOnScheduler)
-                .observeOn(observeOnScheduler)
-                .subscribe()
-    }*/
+    fun register() {
+        loginActions.onOpenRegistration()
+        //stateLiveData.value = OpenRegistrationState()
+    }
 
     private fun onLoginSucces(userEntry: UserEntry) {
-        Log.d("TestPish", "onLoginSucces")
+        Log.d("TestPish", "openMain")
         stateLiveData.value = SuccessState(UserEntry())
     }
 

@@ -15,7 +15,5 @@ class App : Application() {
 
         component = DaggerAppComponent.builder()
                 .build()
-
-        ObjectGraph objectGraph;
     }
 }
