@@ -17,17 +17,17 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            bind:src="@{viewModel.imageUrl}" />
+            bind:src="@{viewModel.user.imageUrl}" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.name}" />
+            android:text="@{viewModel.user.name}" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.surname}" />
+            android:text="@{viewModel.user.surname}" />
 
     </LinearLayout>
 

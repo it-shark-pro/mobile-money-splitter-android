@@ -5,10 +5,12 @@ import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import pro.itshark.moneysplitter.*
-import pro.itshark.moneysplitter.databinding.ActivityUserProfileBinding
+import pro.itshark.moneysplitter.App
+import pro.itshark.moneysplitter.PreferenceKey
+import pro.itshark.moneysplitter.R
 import pro.itshark.moneysplitter.common.PreferenceHelper.defaultSharedPreferences
 import pro.itshark.moneysplitter.common.PreferenceHelper.set
+import pro.itshark.moneysplitter.databinding.ActivityUserProfileBinding
 import javax.inject.Inject
 
 class UserProfileActivity : AppCompatActivity() {
@@ -30,7 +32,6 @@ class UserProfileActivity : AppCompatActivity() {
         initPref()
 
         binding.viewModel = viewModel
-        viewModel.init()
     }
 
     // TODO delete in the future

@@ -3,13 +3,12 @@ package pro.itshark.moneysplitter.di
 import android.app.Application
 import dagger.BindsInstance
 import dagger.Component
-import pro.itshark.moneysplitter.di.modules.NetworkModule
-import pro.itshark.moneysplitter.di.modules.UserProfileModule
+import pro.itshark.moneysplitter.di.modules.*
 import pro.itshark.moneysplitter.presentation.userProfile.UserProfileActivity
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [NetworkModule::class, UserProfileModule::class])
+@Component(modules = [NetworkModule::class, RepositoryModule::class, UseCasesModule::class, ViewModelModule::class])
 interface AppComponent {
 
     @Component.Builder
