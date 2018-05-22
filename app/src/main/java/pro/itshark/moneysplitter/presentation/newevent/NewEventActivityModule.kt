@@ -14,7 +14,7 @@ interface NewEventSubcomponent: AndroidInjector<NewEventActivity> {
     abstract class Builder: AndroidInjector.Builder<NewEventActivity>()
 }
 
-@Module(subcomponents = arrayOf(NewEventSubcomponent::class))
+@Module(subcomponents = [(NewEventSubcomponent::class)])
 abstract class NewEventActivityModule {
     @Binds
     @IntoMap

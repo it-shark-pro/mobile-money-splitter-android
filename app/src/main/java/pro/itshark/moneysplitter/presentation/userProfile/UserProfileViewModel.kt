@@ -4,8 +4,10 @@ import android.arch.lifecycle.ViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import pro.itshark.moneysplitter.domain.UserUseCases
+import javax.inject.Inject
 
-class UserProfileViewModel(private val userUseCases: UserUseCases) : ViewModel() {
+class UserProfileViewModel
+@Inject constructor(private val userUseCases: UserUseCases) : ViewModel() {
 
     var user = UserModel()
 
