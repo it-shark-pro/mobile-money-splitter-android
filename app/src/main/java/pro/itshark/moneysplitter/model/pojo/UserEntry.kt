@@ -1,7 +1,6 @@
 package pro.itshark.moneysplitter.model.pojo
 
 import com.google.gson.annotations.SerializedName
-import pro.itshark.moneysplitter.presentation.userProfile.UserModel
 
 data class UserEntry(
         @SerializedName("Id") val id: Long,
@@ -14,7 +13,4 @@ data class UserEntry(
         @SerializedName("Token") val token: String,
         @SerializedName("ImageUrl") val imageUrl: String,
         @SerializedName("BackgroundImageUrl") val backgroundImageUrl: String
-) {
-    fun convertToModel(): UserModel =
-            UserModel(id, email, name, surname, phoneNumber, creditCardNumber, balance, token, imageUrl, backgroundImageUrl)
-}
+)
