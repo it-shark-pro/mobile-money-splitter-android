@@ -27,9 +27,9 @@ class UserProfileActivity : AppCompatActivity() {
 
         val binding: ActivityUserProfileBinding = DataBindingUtil.setContentView(this, R.layout.activity_user_profile)
 
-        App.component.inject(this)
-
         initPref()
+
+        App.component.inject(this)
 
         binding.viewModel = viewModel
     }

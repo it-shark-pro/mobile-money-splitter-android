@@ -4,6 +4,7 @@ import android.databinding.BaseObservable
 import android.databinding.Bindable
 import pro.itshark.moneysplitter.BR
 import pro.itshark.moneysplitter.EMPTY_STRING
+import pro.itshark.moneysplitter.model.pojo.UserEntry
 
 class UserModel(
         var id: Long = 0,
@@ -17,6 +18,28 @@ class UserModel(
         imageUrl: String = EMPTY_STRING,
         backgroundImageUrl: String = EMPTY_STRING
 ) : BaseObservable() {
+
+    companion object {
+        fun create(userEntry: UserEntry): UserModel = UserModel(
+                userEntry.id,
+                userEntry.email,
+                userEntry.name,
+                userEntry.surname,
+                userEntry.phoneNumber,
+                userEntry.creditCardNumber,
+                userEntry.balance,
+                userEntry.token,
+                userEntry.imageUrl,
+                userEntry.backgroundImageUrl
+        )
+    }
+
+    var email: String = email
+        @Bindable get
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.email)
+        }
 
     var name: String = name
         @Bindable get
@@ -32,6 +55,34 @@ class UserModel(
             notifyPropertyChanged(BR.surname)
         }
 
+    var phoneNumber: Long = phoneNumber
+        @Bindable get
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.phoneNumber)
+        }
+
+    var creditCardNumber: Long = creditCardNumber
+        @Bindable get
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.creditCardNumber)
+        }
+
+    var balance: Float = balance
+        @Bindable get
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.balance)
+        }
+
+    var token: String = token
+        @Bindable get
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.token)
+        }
+
     var imageUrl: String = imageUrl
         @Bindable get
         set(value) {
@@ -39,9 +90,22 @@ class UserModel(
             notifyPropertyChanged(BR.imageUrl)
         }
 
+    var backgroundImageUrl: String = backgroundImageUrl
+        @Bindable get
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.backgroundImageUrl)
+        }
+
     fun update(userModel: UserModel) {
+        email = userModel.email
         name = userModel.name
         surname = userModel.surname
+        phoneNumber = userModel.phoneNumber
+        creditCardNumber = userModel.creditCardNumber
+        balance = userModel.balance
+        token = userModel.token
         imageUrl = userModel.imageUrl
+        backgroundImageUrl = userModel.backgroundImageUrl
     }
 }
