@@ -47,6 +47,9 @@ dependencies {
     implementation libraries.retrofitGsonConverter
     implementation libraries.retrofitAdapter
 
+    implementation libraries.glide
+    kapt libraries.glideCompiler
+
     testImplementation libraries.jUnit
     androidTestImplementation libraries.testRunner
     androidTestImplementation libraries.testEspresso
