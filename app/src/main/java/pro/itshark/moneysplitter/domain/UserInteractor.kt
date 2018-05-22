@@ -8,6 +8,6 @@ class UserInteractor(private val userRepository: UserRepository) : UserUseCases 
 
     override fun getUserInfo(): Single<UserModel> = userRepository.getUserInfo()
             .map { user ->
-                user.convertToModel()
+                UserModel.create(user)
             }
 }
