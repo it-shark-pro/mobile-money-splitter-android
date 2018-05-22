@@ -22,7 +22,7 @@ class UserProfileActivity : AppCompatActivity() {
     }
 
     @Inject
-    lateinit var viewMOdelFactory: ViewModelProvider.Factory
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private lateinit var viewModel: UserProfileViewModel
 
@@ -31,7 +31,7 @@ class UserProfileActivity : AppCompatActivity() {
 
         initPref()
         AndroidInjection.inject(this)
-        viewModel = ViewModelProviders.of(this, viewMOdelFactory).get(UserProfileViewModel::class.java)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(UserProfileViewModel::class.java)
 
         val binding: ActivityUserProfileBinding = DataBindingUtil.setContentView(this, R.layout.activity_user_profile)
 

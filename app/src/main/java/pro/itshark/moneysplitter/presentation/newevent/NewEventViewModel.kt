@@ -14,7 +14,7 @@ class NewEventViewModel
 
     val stateLiveData = MutableLiveData<NewEventState>()
 
-    val event = Event()
+    val event = EventModel()
 
     init {
         stateLiveData.value = DefaultState(event)
