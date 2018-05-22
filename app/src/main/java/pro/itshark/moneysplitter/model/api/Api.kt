@@ -2,7 +2,7 @@ package pro.itshark.moneysplitter.model.api
 
 import io.reactivex.Observable
 import okhttp3.ResponseBody
-import pro.itshark.moneysplitter.model.pojo.Event
+import pro.itshark.moneysplitter.presentation.newevent.Event
 import retrofit2.http.Body
 import retrofit2.http.Header
 import retrofit2.http.POST

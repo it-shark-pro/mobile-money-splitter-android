@@ -29,12 +29,11 @@ class UserProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        initPref()
         AndroidInjection.inject(this)
         viewModel = ViewModelProviders.of(this, viewMOdelFactory).get(UserProfileViewModel::class.java)
 
         val binding: ActivityUserProfileBinding = DataBindingUtil.setContentView(this, R.layout.activity_user_profile)
-
-        initPref()
 
         binding.viewModel = viewModel
     }

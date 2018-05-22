@@ -2,7 +2,7 @@ package pro.itshark.moneysplitter.domain
 
 import io.reactivex.Observable
 import okhttp3.ResponseBody
-import pro.itshark.moneysplitter.model.pojo.Event
+import pro.itshark.moneysplitter.presentation.newevent.Event
 import pro.itshark.moneysplitter.model.repository.EventRepository
 
 class EventInteractor(private val eventRepository: EventRepository) : EventUseCases {

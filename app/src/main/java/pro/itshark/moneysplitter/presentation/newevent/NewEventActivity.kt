@@ -7,9 +7,11 @@ import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.MenuItem
+import android.view.View
+import android.widget.Toast
 import dagger.android.AndroidInjection
 import pro.itshark.moneysplitter.R
 import pro.itshark.moneysplitter.databinding.ActivityAddEventBinding
@@ -17,8 +19,13 @@ import javax.inject.Inject
 
 class NewEventActivity : AppCompatActivity() {
 
+    companion object {
+        fun start(context: Context) = context.startActivity(Intent(context, NewEventActivity::class.java))
+    }
+
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+    private lateinit var dialog: AlertDialog
 
     private lateinit var viewModel: NewEventViewModel
 
@@ -26,16 +33,19 @@ class NewEventActivity : AppCompatActivity() {
         state?.let {
             when (state) {
                 is DefaultState -> {
-                    Log.d("State", "default state")
+                    dialog.dismiss()
                 }
                 is SendingState -> {
-                    Log.d("State", "sending state")
+                    dialog.show()
                 }
                 is SuccessState -> {
-                    Log.d("State", "success state")
+                    Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+                    dialog.dismiss()
+                    finish()
                 }
                 is ErrorState -> {
-                    Log.d("State", "error state")
+                    Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
+                    dialog.dismiss()
                 }
             }
         }
@@ -44,9 +54,6 @@ class NewEventActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         init()
-
-        val binding = DataBindingUtil.setContentView<ActivityAddEventBinding>(this, R.layout.activity_add_event)
-        binding.viewModel = viewModel
     }
 
     private fun init() {
@@ -57,6 +64,18 @@ class NewEventActivity : AppCompatActivity() {
         title = getString(R.string.new_event)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(NewEventViewModel::class.java)
         viewModel.stateLiveData.observe(this, stateObserver)
+
+        val binding = DataBindingUtil.setContentView<ActivityAddEventBinding>(this, R.layout.activity_add_event)
+        binding.viewModel = viewModel
+
+        dialog = createDialog()
+    }
+
+    private fun createDialog(): AlertDialog {
+        val builder = AlertDialog.Builder(this)
+        builder.setView(View.inflate(this, R.layout.progress_dialog, null))
+        builder.setCancelable(false)
+        return builder.create()
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -71,9 +90,5 @@ class NewEventActivity : AppCompatActivity() {
         super.onDestroy()
 
         viewModel.stateLiveData.removeObserver(stateObserver)
-    }
-
-    companion object {
-        fun start(context: Context) = context.startActivity(Intent(context, NewEventActivity::class.java))
     }
 }

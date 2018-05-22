@@ -5,4 +5,5 @@
     <string name="create_event">CREATE EVENT</string>
     <string name="new_event">New event</string>
     <string name="cost">Cost</string>
+    <string name="wait">Please wait</string>
 </resources>

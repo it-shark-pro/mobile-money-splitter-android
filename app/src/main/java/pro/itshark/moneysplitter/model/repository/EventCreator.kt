@@ -3,7 +3,7 @@ package pro.itshark.moneysplitter.model.repository
 import io.reactivex.Observable
 import okhttp3.ResponseBody
 import pro.itshark.moneysplitter.model.api.Api
-import pro.itshark.moneysplitter.model.pojo.Event
+import pro.itshark.moneysplitter.presentation.newevent.Event
 
 class EventCreator(private val api: Api) : EventRepository {
 

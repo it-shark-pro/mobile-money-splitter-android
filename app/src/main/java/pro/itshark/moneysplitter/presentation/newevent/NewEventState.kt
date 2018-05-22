@@ -1,7 +1,5 @@
 package pro.itshark.moneysplitter.presentation.newevent
 
-import pro.itshark.moneysplitter.model.pojo.Event
-
 sealed class NewEventState {
     abstract val event: Event
 }
