@@ -14,6 +14,7 @@ class App : Application() {
         super.onCreate()
 
         component = DaggerAppComponent.builder()
+                .application(this)
                 .build()
     }
 }
