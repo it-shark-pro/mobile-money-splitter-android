@@ -1,11 +1,13 @@
 package pro.itshark.moneysplitter.presentation.userProfile
 
+import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import pro.itshark.moneysplitter.App
+import dagger.android.AndroidInjection
 import pro.itshark.moneysplitter.PreferenceKey
 import pro.itshark.moneysplitter.R
 import pro.itshark.moneysplitter.common.PreferenceHelper.defaultSharedPreferences
@@ -20,16 +22,18 @@ class UserProfileActivity : AppCompatActivity() {
     }
 
     @Inject
-    lateinit var viewModel: UserProfileViewModel
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private lateinit var viewModel: UserProfileViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding: ActivityUserProfileBinding = DataBindingUtil.setContentView(this, R.layout.activity_user_profile)
-
         initPref()
+        AndroidInjection.inject(this)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(UserProfileViewModel::class.java)
 
-        App.component.inject(this)
+        val binding: ActivityUserProfileBinding = DataBindingUtil.setContentView(this, R.layout.activity_user_profile)
 
         binding.viewModel = viewModel
     }

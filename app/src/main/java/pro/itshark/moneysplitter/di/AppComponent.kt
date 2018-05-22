@@ -3,12 +3,22 @@ package pro.itshark.moneysplitter.di
 import android.app.Application
 import dagger.BindsInstance
 import dagger.Component
+import pro.itshark.moneysplitter.App
 import pro.itshark.moneysplitter.di.modules.*
-import pro.itshark.moneysplitter.presentation.userProfile.UserProfileActivity
+import pro.itshark.moneysplitter.presentation.newevent.NewEventActivityModule
+import pro.itshark.moneysplitter.presentation.userProfile.UserProfileActivityModule
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [NetworkModule::class, RepositoryModule::class, UseCasesModule::class, ViewModelModule::class])
+@Component(modules = arrayOf(
+        NetworkModule::class,
+        ViewModelFactoryModule::class,
+        ViewModelModule::class,
+        UseCasesModule::class,
+        RepositoryModule::class,
+        NewEventActivityModule::class,
+        UserProfileActivityModule::class
+))
 interface AppComponent {
 
     @Component.Builder
@@ -19,5 +29,5 @@ interface AppComponent {
         fun build(): AppComponent
     }
 
-    fun inject(userProfileActivity: UserProfileActivity)
+    fun inject(app: App)
 }

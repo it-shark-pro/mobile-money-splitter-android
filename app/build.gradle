@@ -40,7 +40,11 @@ dependencies {
     implementation libraries.rxAndroid
 
     implementation libraries.dagger
+    implementation libraries.daggerSupport
     kapt libraries.daggerCompiler
+
+    implementation libraries.extensions
+    implementation libraries.viewmodel
 
     implementation libraries.retrofit
     implementation libraries.retrofitGsonConverter
@@ -52,4 +56,5 @@ dependencies {
     testImplementation libraries.jUnit
     androidTestImplementation libraries.testRunner
     androidTestImplementation libraries.testEspresso
+
 }
