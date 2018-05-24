@@ -5,6 +5,7 @@ import dagger.BindsInstance
 import dagger.Component
 import pro.itshark.moneysplitter.App
 import pro.itshark.moneysplitter.di.modules.*
+import pro.itshark.moneysplitter.presentation.events.EventsActivityModule
 import pro.itshark.moneysplitter.presentation.newevent.NewEventActivityModule
 import pro.itshark.moneysplitter.presentation.userProfile.UserProfileActivityModule
 import javax.inject.Singleton
@@ -16,6 +17,7 @@ import javax.inject.Singleton
         ViewModelModule::class,
         UseCasesModule::class,
         RepositoryModule::class,
+        EventsActivityModule::class,
         NewEventActivityModule::class,
         UserProfileActivityModule::class
 ))

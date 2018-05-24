@@ -70,7 +70,6 @@
         </android.support.design.widget.TextInputLayout>
 
         <Button
-            style="@style/Style.Button.Colored"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:onClick="@{() -> viewModel.createButtonClicked()}"
