@@ -10,7 +10,7 @@ ext.versions = [
         gradle                 : '3.1.2',
         kotlin                 : '1.2.41',
 
-        arch                   : '1.1.1',
+        architecture           : '1.1.1',
 
         supportLibs            : '27.1.1',
         supportConstraintLayout: '1.0.2',
@@ -48,8 +48,8 @@ ext.libraries = [
 
         kotlin                  : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin",
 
-        extensions              : "android.arch.lifecycle:extensions:$versions.arch",
-        viewmodel               : "android.arch.lifecycle:viewmodel:$versions.arch",
+        architectureExtensions  : "android.arch.lifecycle:extensions:$versions.architecture",
+        architectureViewModel   : "android.arch.lifecycle:viewmodel:$versions.architecture",
 
         multiDex                : "com.android.support:multidex:$versions.multiDex",
 

@@ -14,7 +14,7 @@ data class EventEntry(
     val isClosed: Boolean,
 
     @SerializedName("SingleCost")
-    val singleCost: Int,
+    val singleCost: Double,
 
     @SerializedName("Title")
     val title: String,
@@ -27,6 +27,9 @@ data class EventEntry(
 
     @SerializedName("Coast")
     val coast: Int,
+
+    @SerializedName("OngoingDate")
+    val ongoingDate: String,
 
     @SerializedName("ImageUrl")
     val imageUrl: String

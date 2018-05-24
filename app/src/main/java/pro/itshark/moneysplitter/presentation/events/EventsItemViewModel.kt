@@ -1,5 +1,7 @@
 package pro.itshark.moneysplitter.presentation.events
 
-class EventsItemViewModel(var title: String) {
+import android.arch.lifecycle.ViewModel
+
+class EventsItemViewModel(var title: String) : ViewModel() {
 
 }

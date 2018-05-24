@@ -5,11 +5,8 @@ import dagger.Binds
 import dagger.MapKey
 import dagger.Module
 import dagger.multibindings.IntoMap
-import pro.itshark.moneysplitter.presentation.newevent.NewEventViewModel
-import dagger.Provides
-import pro.itshark.moneysplitter.domain.UserUseCases
-import pro.itshark.moneysplitter.domain.events.EventsUseCases
 import pro.itshark.moneysplitter.presentation.events.EventsViewModel
+import pro.itshark.moneysplitter.presentation.newevent.NewEventViewModel
 import pro.itshark.moneysplitter.presentation.userProfile.UserProfileViewModel
 import kotlin.reflect.KClass
 
@@ -24,14 +21,16 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(NewEventViewModel::class)
-    abstract fun bindNewEventViewModel(viewModel: NewEventViewModel) : ViewModel
+    abstract fun bindNewEventViewModel(viewModel: NewEventViewModel): ViewModel
 
     @Binds
     @IntoMap
     @ViewModelKey(UserProfileViewModel::class)
-    abstract fun bindUserProfileViewMOdel(viewModel: UserProfileViewModel) : ViewModel
+    abstract fun bindUserProfileViewMOdel(viewModel: UserProfileViewModel): ViewModel
 
 
-    @Provides
-    fun provideEventsViewModel(eventsUseCases: EventsUseCases): EventsViewModel = EventsViewModel(eventsUseCases)
+    @Binds
+    @IntoMap
+    @ViewModelKey(EventsViewModel::class)
+    abstract fun bindEventsViewModel(eventsViewModel: EventsViewModel): ViewModel
 }

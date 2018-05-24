@@ -6,9 +6,9 @@ import pro.itshark.moneysplitter.domain.EventInteractor
 import pro.itshark.moneysplitter.domain.EventUseCases
 import pro.itshark.moneysplitter.domain.UserInteractor
 import pro.itshark.moneysplitter.domain.UserUseCases
-import pro.itshark.moneysplitter.model.repository.EventRepository
 import pro.itshark.moneysplitter.domain.events.EventsInteractor
 import pro.itshark.moneysplitter.domain.events.EventsUseCases
+import pro.itshark.moneysplitter.model.repository.EventRepository
 import pro.itshark.moneysplitter.model.repository.UserRepository
 import pro.itshark.moneysplitter.model.repository.events.EventsRepository
 
@@ -22,5 +22,5 @@ class UseCasesModule {
     fun provideEventUseCases(eventRepository: EventRepository): EventUseCases = EventInteractor(eventRepository)
 
     @Provides
-    fun provideEventsUseCases(eventsRepository: EventsRepository) : EventsUseCases = EventsInteractor();
+    fun provideEventsUseCases(eventsRepository: EventsRepository) : EventsUseCases = EventsInteractor(eventsRepository);
 }

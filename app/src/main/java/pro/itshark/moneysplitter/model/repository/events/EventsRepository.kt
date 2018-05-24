@@ -5,5 +5,5 @@ import pro.itshark.moneysplitter.model.pojo.EventEntry
 
 interface EventsRepository {
 
-    fun getEvents() : Single<List<EventEntry>>?
+    fun getEvents() : Single<List<EventEntry>>
 }

@@ -3,7 +3,7 @@
     <data>
 
         <variable
-            name="item"
+            name="viewModel"
             type="pro.itshark.moneysplitter.presentation.events.EventsItemViewModel" />
     </data>
 
@@ -14,9 +14,10 @@
         android:orientation="vertical">
 
         <TextView
+            android:textColor="@color/color_text_primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{item.title}" />
+            android:text="@{viewModel.title}" />
     </FrameLayout>
 
 </layout>
