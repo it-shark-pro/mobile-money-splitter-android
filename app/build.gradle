@@ -50,8 +50,8 @@ dependencies {
     implementation libraries.daggerSupport
     kapt libraries.daggerCompiler
 
-    implementation libraries.extensions
-    implementation libraries.viewmodel
+    implementation libraries.architectureExtensions
+    implementation libraries.architectureViewModel
 
     implementation libraries.retrofit
     implementation libraries.retrofitGsonConverter
