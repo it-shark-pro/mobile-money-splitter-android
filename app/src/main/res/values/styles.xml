@@ -3,19 +3,19 @@
 
     <!-- Fonts -->
     <style name="TextAppearance.Base.Regular" parent="android:TextAppearance">
-
+        <item name="android:fontFamily">@font/roboto_regular</item>
     </style>
 
     <style name="TextAppearance.Base.Medium" parent="android:TextAppearance">
-
+        <item name="android:fontFamily">@font/roboto_medium</item>
     </style>
 
     <style name="TextAppearance.Base.Light" parent="android:TextAppearance">
-
+        <item name="android:fontFamily">@font/roboto_light</item>
     </style>
 
     <style name="TextAppearance.Base.Thin" parent="android:TextAppearance">
-
+        <item name="android:fontFamily">@font/roboto_thin</item>
     </style>
 
     <!-- Display 4 TextAppearance -->
@@ -123,19 +123,6 @@
 
     <style name="TextAppearance.Button.Primary" parent="TextAppearance.Button.Base">
         <item name="android:textColor">@color/color_text_primary</item>
-    </style>
-
-    <!-- Button styles -->
-    <style name="Style.Button.Colored" parent="Widget.AppCompat.Button.Colored">
-        <item name="android:textAppearance">@style/TextAppearance.Button.Primary</item>
-    </style>
-
-    <style name="Style.Button.Flat.Colored" parent="Widget.AppCompat.Button.Borderless.Colored">
-        <item name="android:textAppearance">@style/TextAppearance.Button.Accent</item>
-    </style>
-
-    <style name="Style.Button.Flat" parent="Widget.AppCompat.Button.Borderless">
-        <item name="android:textAppearance">@style/TextAppearance.Button.Primary</item>
     </style>
 
 </resources>
