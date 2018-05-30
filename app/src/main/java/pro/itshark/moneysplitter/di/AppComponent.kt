@@ -6,7 +6,7 @@ import dagger.Component
 import pro.itshark.moneysplitter.App
 import pro.itshark.moneysplitter.di.modules.*
 import pro.itshark.moneysplitter.presentation.events.EventsActivityModule
-import pro.itshark.moneysplitter.presentation.newevent.NewEventActivityModule
+import pro.itshark.moneysplitter.presentation.events.newevent.NewEventActivityModule
 import pro.itshark.moneysplitter.presentation.userProfile.UserProfileActivityModule
 import javax.inject.Singleton
 

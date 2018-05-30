@@ -22,7 +22,7 @@
 
         <activity android:name=".presentation.userProfile.UserProfileActivity" />
 
-        <activity android:name=".presentation.newevent.NewEventActivity" />
+        <activity android:name=".presentation.events.newevent.NewEventActivity" />
     </application>
 
 </manifest>

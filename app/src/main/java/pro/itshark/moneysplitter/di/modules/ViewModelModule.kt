@@ -6,10 +6,9 @@ import dagger.MapKey
 import dagger.Module
 import dagger.multibindings.IntoMap
 import pro.itshark.moneysplitter.presentation.events.EventsViewModel
-import pro.itshark.moneysplitter.presentation.newevent.NewEventViewModel
+import pro.itshark.moneysplitter.presentation.events.newevent.NewEventViewModel
 import pro.itshark.moneysplitter.presentation.userProfile.UserProfileViewModel
 import kotlin.reflect.KClass
-
 
 @Target(AnnotationTarget.FUNCTION)
 @Retention(AnnotationRetention.RUNTIME)
