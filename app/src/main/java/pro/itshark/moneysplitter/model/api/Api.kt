@@ -1,6 +1,5 @@
 package pro.itshark.moneysplitter.model.api
 
-import io.reactivex.Observable
 import io.reactivex.Single
 import okhttp3.ResponseBody
 import pro.itshark.moneysplitter.model.pojo.EventEntry
@@ -18,5 +17,5 @@ interface Api {
     @POST("transactions/add")
     fun createEvent(@Header("X-USERNAME") email: String,
                     @Header("X-TOKEN") token: String,
-                    @Body event: NewEventEntry): Observable<ResponseBody>
+                    @Body event: NewEventEntry): Single<ResponseBody>
 }

@@ -6,5 +6,5 @@ data class NewEventEntry(
         @SerializedName("Title") val title: String,
         @SerializedName("Description") val description: String,
         @SerializedName("Coast") val cost: Double,
-        @SerializedName("ImageBase64String") val image: String
+        @SerializedName("ImageBase64String") val encodedImage: String
 )

@@ -5,7 +5,6 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.provider.MediaStore.Images.Media
 import android.util.Base64
-import io.reactivex.Observable
 import io.reactivex.Single
 import okhttp3.ResponseBody
 import pro.itshark.moneysplitter.model.pojo.NewEventEntry
@@ -22,7 +21,7 @@ class EventsInteractor(private val eventRepository: EventsRepository, private va
                     .map { entry -> EventModel.create(entry) }
                     .toList()
 
-    override fun createEvent(event: EventModel, email: String, token: String): Observable<ResponseBody> =
+    override fun createEvent(event: EventModel, email: String, token: String): Single<ResponseBody> =
             eventRepository.createEvent(convertModel(event), email, token)
 
     private fun convertModel(eventModel: EventModel) = NewEventEntry(
@@ -32,11 +31,11 @@ class EventsInteractor(private val eventRepository: EventsRepository, private va
                 convertImage(eventModel.image))
 
     private fun convertImage(uri: String): String {
-        val image = Media.getBitmap(app.contentResolver, Uri.parse(uri))
-        val baos = ByteArrayOutputStream()
-        image.compress(Bitmap.CompressFormat.PNG, 100, baos)
-        val b = baos.toByteArray()
+        val imageBitmap = Media.getBitmap(app.contentResolver, Uri.parse(uri))
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
+        val imageByteArray = byteArrayOutputStream.toByteArray()
 
-        return Base64.encodeToString(b, Base64.DEFAULT)
+        return Base64.encodeToString(imageByteArray, Base64.DEFAULT)
     }
 }

@@ -1,6 +1,5 @@
 package pro.itshark.moneysplitter.model.repository.events
 
-import io.reactivex.Observable
 import io.reactivex.Single
 import okhttp3.ResponseBody
 import pro.itshark.moneysplitter.model.api.Api
@@ -11,6 +10,6 @@ class EventsRepo(private val api: Api) : EventsRepository {
 
     override fun getEvents(): Single<List<EventEntry>> = api.getEvents()
 
-    override fun createEvent(event: NewEventEntry, email: String, token: String): Observable<ResponseBody> =
+    override fun createEvent(event: NewEventEntry, email: String, token: String): Single<ResponseBody> =
             api.createEvent(email, token, event)
 }
