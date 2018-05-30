@@ -1,4 +1,4 @@
-package pro.itshark.moneysplitter.presentation.newevent
+package pro.itshark.moneysplitter.presentation.events
 
 import android.databinding.BaseObservable
 import android.databinding.Bindable
@@ -9,7 +9,8 @@ import pro.itshark.moneysplitter.model.pojo.EventEntry
 class EventModel(
         title: String = EMPTY_STRING,
         description: String = EMPTY_STRING,
-        cost: String = EMPTY_STRING
+        cost: String = EMPTY_STRING,
+        image: String = EMPTY_STRING
 ) : BaseObservable() {
 
     companion object {
@@ -40,4 +41,12 @@ class EventModel(
         field = value
         notifyPropertyChanged(BR.cost)
     }
+
+    var image : String = image
+    @Bindable get() = field
+    set(value) {
+        field = value
+        notifyPropertyChanged(BR.image)
+    }
+
 }

@@ -5,7 +5,6 @@ import android.arch.lifecycle.ViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import pro.itshark.moneysplitter.domain.events.EventsUseCases
-import pro.itshark.moneysplitter.presentation.newevent.EventModel
 import javax.inject.Inject
 
 class EventsViewModel

@@ -1,5 +1,6 @@
-package pro.itshark.moneysplitter.presentation.newevent
+package pro.itshark.moneysplitter.presentation.events.newevent
 
+import android.app.Activity
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
@@ -13,6 +14,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import dagger.android.AndroidInjection
+import kotlinx.android.synthetic.main.activity_add_event.*
 import pro.itshark.moneysplitter.R
 import pro.itshark.moneysplitter.databinding.ActivityAddEventBinding
 import javax.inject.Inject
@@ -29,6 +31,8 @@ class NewEventActivity : AppCompatActivity() {
 
     private lateinit var viewModel: NewEventViewModel
 
+    private val PICK_IMAGE_CODE = 3
+
     private val stateObserver = Observer<NewEventState> { state ->
         state?.let {
             when (state) {
@@ -43,6 +47,9 @@ class NewEventActivity : AppCompatActivity() {
                     dialog.dismiss()
                     finish()
                 }
+                is ChoosingImageState -> {
+                    chooseImage()
+                }
                 is ErrorState -> {
                     Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
                     dialog.dismiss()
@@ -53,20 +60,22 @@ class NewEventActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         init()
     }
 
     private fun init() {
         AndroidInjection.inject(this)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        title = getString(R.string.new_event)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(NewEventViewModel::class.java)
         viewModel.stateLiveData.observe(this, stateObserver)
 
         val binding = DataBindingUtil.setContentView<ActivityAddEventBinding>(this, R.layout.activity_add_event)
         binding.viewModel = viewModel
+
+        setSupportActionBar(my_toolbar_view)
+        supportActionBar?.title = getString(R.string.new_event)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         dialog = createDialog()
     }
@@ -76,6 +85,21 @@ class NewEventActivity : AppCompatActivity() {
         builder.setView(View.inflate(this, R.layout.progress_dialog, null))
         builder.setCancelable(false)
         return builder.create()
+    }
+
+    private fun chooseImage() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(Intent.createChooser(intent, getString(R.string.select_picture_title)), PICK_IMAGE_CODE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == PICK_IMAGE_CODE && resultCode == Activity.RESULT_OK) {
+            viewModel.onChoosingImageResult(data!!.data)
+        }
+
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

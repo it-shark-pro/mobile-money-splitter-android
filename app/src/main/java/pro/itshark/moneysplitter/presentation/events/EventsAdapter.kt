@@ -2,7 +2,6 @@ package pro.itshark.moneysplitter.presentation.events
 
 import pro.itshark.moneysplitter.R
 import pro.itshark.moneysplitter.common.RecyclerBaseAdapter
-import pro.itshark.moneysplitter.presentation.newevent.EventModel
 
 class EventsAdapter(var items: List<EventModel>) : RecyclerBaseAdapter() {
 

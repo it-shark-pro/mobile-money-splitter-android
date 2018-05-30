@@ -13,7 +13,7 @@ import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_events.*
 import pro.itshark.moneysplitter.R
 import pro.itshark.moneysplitter.databinding.ActivityEventsBinding
-import pro.itshark.moneysplitter.presentation.newevent.NewEventActivity
+import pro.itshark.moneysplitter.presentation.events.newevent.NewEventActivity
 import pro.itshark.moneysplitter.presentation.userProfile.UserProfileActivity
 import javax.inject.Inject
 

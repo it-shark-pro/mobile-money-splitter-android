@@ -1,7 +1,5 @@
 package pro.itshark.moneysplitter.presentation.events
 
-import pro.itshark.moneysplitter.presentation.newevent.EventModel
-
 sealed class EventsState {
     abstract val eventList: List<EventModel>
 }
