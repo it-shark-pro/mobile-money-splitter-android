@@ -7,7 +7,7 @@ class EventsAdapter(var items: List<EventModel>) : RecyclerBaseAdapter() {
 
     override fun getLayoutIdForPosition(position: Int) = R.layout.adapter_events_item
 
-    override fun getViewModel(position: Int) = EventsItemViewModel(items[position].title)
+    override fun getViewModel(position: Int) = EventsItemViewModel(items[position].title, items[position].description)
 
     override fun getItemCount() = items.size
 

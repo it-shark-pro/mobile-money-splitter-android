@@ -5,7 +5,7 @@ import android.net.Uri
 import android.widget.ImageView
 import pro.itshark.moneysplitter.GlideApp
 
-object BindingAdapter {
+object ImageViewBindingAdapter {
 
     @JvmStatic
     @BindingAdapter("bind:src")

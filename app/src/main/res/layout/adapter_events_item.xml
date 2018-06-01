@@ -1,23 +1,45 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
 
         <variable
             name="viewModel"
             type="pro.itshark.moneysplitter.presentation.events.EventsItemViewModel" />
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
         android:orientation="vertical">
 
         <TextView
-            android:textColor="@color/color_text_primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.title}" />
-    </FrameLayout>
+            android:text="@{viewModel.title}"
+            android:textAppearance="@style/TextAppearance.Body1.Primary"
+            tools:text="Title" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{viewModel.description}"
+            android:textAppearance="@style/TextAppearance.Body1.PrimarySecondary"
+            android:visibility="@{!TextUtils.isEmpty(viewModel.description) ? View.VISIBLE : View.GONE}"
+            tools:text="Description" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="4dp"
+            android:background="@color/color_divider" />
+
+    </LinearLayout>
 
 </layout>
