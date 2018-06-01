@@ -6,7 +6,7 @@ import pro.itshark.moneysplitter.model.api.Api
 import pro.itshark.moneysplitter.model.pojo.EventEntry
 import pro.itshark.moneysplitter.model.pojo.NewEventEntry
 
-class EventsRepo(private val api: Api) : EventsRepository {
+class EventsRepositoryImpl(private val api: Api) : EventsRepository {
 
     override fun getEvents(): Single<List<EventEntry>> = api.getEvents()
 
