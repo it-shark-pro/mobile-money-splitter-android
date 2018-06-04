@@ -1,4 +1,4 @@
-package pro.itshark.moneysplitter.presentation.newevent
+package pro.itshark.moneysplitter.presentation.events.newevent
 
 import android.app.Activity
 import dagger.Binds

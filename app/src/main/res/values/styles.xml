@@ -120,8 +120,4 @@
         <item name="android:textColor">@color/color_text_accent</item>
     </style>
 
-    <style name="TextAppearance.Button.Primary" parent="TextAppearance.Button.Base">
-        <item name="android:textColor">@color/color_text_primary</item>
-    </style>
-
 </resources>

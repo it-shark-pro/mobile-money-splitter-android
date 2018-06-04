@@ -6,6 +6,7 @@
     <string name="new_event">New event</string>
     <string name="cost">Cost</string>
     <string name="wait">Please wait</string>
+    <string name="select_picture_title">Select picture</string>
 
     <!-- RegLogin -->
     <string name="login_error_text">Sorry, something went wrong</string>
