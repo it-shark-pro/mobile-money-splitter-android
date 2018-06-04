@@ -22,8 +22,5 @@ class UseCasesModule {
     fun provideEventUseCases(eventRepository: EventRepository): EventUseCases = EventInteractor(eventRepository)
 
     @Provides
-    fun provideEventsUseCases(eventsRepository: EventsRepository) : EventsUseCases = EventsInteractor(eventsRepository);
-
-    @Provides
-    fun providesUserUseCases(userRepository: UserRepository): UserUseCases = UserInteractor(userRepository)
+    fun provideEventsUseCases(eventsRepository: EventsRepository) : EventsUseCases = EventsInteractor(eventsRepository)
 }

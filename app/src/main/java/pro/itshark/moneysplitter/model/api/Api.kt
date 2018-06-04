@@ -1,8 +1,6 @@
 package pro.itshark.moneysplitter.model.api
 
-import io.reactivex.Observable
 import pro.itshark.moneysplitter.model.pojo.UserEntry
-import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -13,10 +11,8 @@ import io.reactivex.Single
 import okhttp3.ResponseBody
 import pro.itshark.moneysplitter.model.pojo.EventEntry
 import pro.itshark.moneysplitter.presentation.newevent.EventModel
-import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
-import retrofit2.http.POST
 
 interface Api {
     @POST("session/register")

@@ -1,35 +1,33 @@
 package pro.itshark.moneysplitter.presentation.regLogin.registration
 
 import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
+import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.fragment_login.*
-import pro.itshark.moneysplitter.App
+import dagger.android.support.AndroidSupportInjection
 import pro.itshark.moneysplitter.R
-import pro.itshark.moneysplitter.presentation.regLogin.login.ErrorState
-import pro.itshark.moneysplitter.presentation.regLogin.login.LoginScreenState
-import pro.itshark.moneysplitter.presentation.regLogin.login.LoginViewModel
-import pro.itshark.moneysplitter.presentation.regLogin.login.SuccessState
+import pro.itshark.moneysplitter.databinding.FragmentRegistrationBinding
+import pro.itshark.moneysplitter.presentation.regLogin.RegLoginActivityViewModel
 import javax.inject.Inject
 
 class RegistrationFragment: Fragment() {
     @Inject
-    lateinit var viewModel: LoginViewModel
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    lateinit var viewModel: RegistrationViewModel
 
-    private val stateObserver = Observer<LoginScreenState> { state ->
+    private val stateObserver = Observer<RegistrationScreenStates> { state ->
         state?.let {
             when (state) {
                 is ErrorState -> {
-                    frameLayoutLoginErrorView.visibility = View.VISIBLE
-                    text_view_login_result_text.setText("Error")
                 }
 
                 is SuccessState -> {
-                    frameLayoutLoginErrorView.visibility = View.INVISIBLE
-                    text_view_login_result_text.setText("Succes")
                 }
             }
         }
@@ -38,22 +36,20 @@ class RegistrationFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        App.component.inject(this)
-        viewModel.stateLiveData.observe(this, stateObserver)
+        AndroidSupportInjection.inject(this)
     }
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_registration, container, false)
-    }
+        val binding = DataBindingUtil.inflate<FragmentRegistrationBinding>(inflater, R.layout.fragment_registration, container,false)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-/*        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(RegistrationViewModel::class.java)
+        viewModel.stateLiveData.observe(this, stateObserver)
+        binding.viewmodel = viewModel
 
-        buttonLogin.setOnClickListener {
-            val email = edit_text_email_input.text.toString()
-            val password = edit_text_password.text.toString()
-            viewModel.login(email, password)
-        }*/
+        val regLoginViewModel = ViewModelProviders.of(this, viewModelFactory).get(RegLoginActivityViewModel::class.java)
+        binding.regLoginViewModel = regLoginViewModel
+
+        return binding.root
     }
 }

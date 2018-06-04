@@ -1,5 +1,6 @@
 package pro.itshark.moneysplitter.model.repository
 
+import io.reactivex.Observable
 import io.reactivex.Single
 import pro.itshark.moneysplitter.model.pojo.UserEntry
 

@@ -7,7 +7,11 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import pro.itshark.moneysplitter.presentation.events.EventsViewModel
 import pro.itshark.moneysplitter.presentation.newevent.NewEventViewModel
+import pro.itshark.moneysplitter.presentation.regLogin.RegLoginActivityViewModel
+import pro.itshark.moneysplitter.presentation.regLogin.login.LoginViewModel
+import pro.itshark.moneysplitter.presentation.regLogin.registration.RegistrationViewModel
 import pro.itshark.moneysplitter.presentation.userProfile.UserProfileViewModel
+import javax.inject.Singleton
 import kotlin.reflect.KClass
 
 
@@ -34,9 +38,21 @@ abstract class ViewModelModule {
     @ViewModelKey(EventsViewModel::class)
     abstract fun bindEventsViewModel(eventsViewModel: EventsViewModel): ViewModel
 
-    @Provides
-    fun bindLoginViewModel(userUseCases: UserUseCases,
-                           @Named(SCHEDULER_IO) subscribeOnScheduler: Scheduler,
-                           @Named(SCHEDULER_MAIN_THREAD) observeOnScheduler: Scheduler,
-                           regLoginActivityViewModel: RegLoginActivityViewModel) = LoginViewModel(userUseCases, subscribeOnScheduler, observeOnScheduler, regLoginActivityViewModel)
+    @Binds
+    @IntoMap
+    @Singleton
+    @ViewModelKey(RegLoginActivityViewModel::class)
+    abstract fun bindRegLoginViewModel(regLoginActivityViewModel: RegLoginActivityViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @Singleton
+    @ViewModelKey(LoginViewModel::class)
+    abstract fun bindLoginActivityViewModel(loginViewModel: LoginViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @Singleton
+    @ViewModelKey(RegistrationViewModel::class)
+    abstract fun bindRegistrationActivityViewModel(registrationViewModel: RegistrationViewModel): ViewModel
 }

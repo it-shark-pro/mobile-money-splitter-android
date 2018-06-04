@@ -1,14 +1,24 @@
 package pro.itshark.moneysplitter.model
 
 import android.content.Context
+import io.reactivex.Observable
 import io.reactivex.Single
 import pro.itshark.moneysplitter.PreferenceKey
 import pro.itshark.moneysplitter.model.pojo.UserEntry
 import pro.itshark.moneysplitter.model.repository.UserRepository
 import pro.itshark.moneysplitter.common.PreferenceHelper.defaultSharedPreferences
 import pro.itshark.moneysplitter.common.PreferenceHelper.get
+import pro.itshark.moneysplitter.model.api.Api
 
-class UserLocalStorage(private val context: Context) : UserRepository {
+class UserDownloader(private val context: Context, private val api: Api) : UserRepository {
+
+    override fun login(email: String, password: String): Observable<UserEntry> {
+        return api.login(email, password)
+    }
+
+    override fun register(userEntry: UserEntry): Observable<UserEntry> {
+        return api.register(userEntry)
+    }
 
     override fun getUserInfo(): Single<UserEntry> {
         val prefs = defaultSharedPreferences(context)

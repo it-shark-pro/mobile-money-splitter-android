@@ -3,6 +3,8 @@ package pro.itshark.moneysplitter.presentation.events
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Context
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -19,6 +21,10 @@ import javax.inject.Inject
 
 
 class EventsActivity : AppCompatActivity() {
+
+    companion object {
+        fun start(context: Context) = context.startActivity(Intent(context, EventsActivity::class.java))
+    }
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
