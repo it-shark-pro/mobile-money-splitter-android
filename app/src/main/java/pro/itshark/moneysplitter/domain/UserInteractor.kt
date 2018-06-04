@@ -1,10 +1,17 @@
 package pro.itshark.moneysplitter.domain
 
-import io.reactivex.Observable
-import pro.itshark.moneysplitter.model.pojo.UserEntry
+import io.reactivex.Single
 import pro.itshark.moneysplitter.model.repository.UserRepository
+import pro.itshark.moneysplitter.presentation.userProfile.UserModel
 
 class UserInteractor(private val userRepository: UserRepository) : UserUseCases {
+
+    override fun getUserInfo(): Single<UserModel> = userRepository.getUserInfo()
+            .map { user ->
+                UserModel.create(user)
+            }
+
+
     override fun login(email: String, password: String): Observable<UserEntry>{
         return userRepository.login(email, password)
         //.updateUserData
@@ -27,6 +34,4 @@ class UserInteractor(private val userRepository: UserRepository) : UserUseCases 
                             user.creditCardNumber)
                 }*//*
     }*/
-
-
 }

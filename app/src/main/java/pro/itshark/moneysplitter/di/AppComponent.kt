@@ -1,17 +1,35 @@
 package pro.itshark.moneysplitter.di
 
+import android.app.Application
+import dagger.BindsInstance
 import dagger.Component
+import pro.itshark.moneysplitter.App
 import pro.itshark.moneysplitter.di.modules.*
-import pro.itshark.moneysplitter.presentation.regLogin.login.LoginFragment
-import pro.itshark.moneysplitter.presentation.regLogin.login.LoginViewModel
-import pro.itshark.moneysplitter.presentation.regLogin.registration.RegistrationFragment
+import pro.itshark.moneysplitter.presentation.events.EventsActivityModule
+import pro.itshark.moneysplitter.presentation.newevent.NewEventActivityModule
+import pro.itshark.moneysplitter.presentation.userProfile.UserProfileActivityModule
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [(NetworkModule::class), (UseCasesModule::class), (ApplicationModule::class), (ViewModelModule::class), (RepositoryModule::class)])
-
+@Component(modules = arrayOf(
+        NetworkModule::class,
+        ViewModelFactoryModule::class,
+        ViewModelModule::class,
+        UseCasesModule::class,
+        RepositoryModule::class,
+        EventsActivityModule::class,
+        NewEventActivityModule::class,
+        UserProfileActivityModule::class,
+))
 interface AppComponent {
-    fun inject(loginViewModel: LoginViewModel)
-    fun inject(loginFragment: LoginFragment)
-    fun inject(registrationFragment: RegistrationFragment)
+
+    @Component.Builder
+    interface Builder {
+        @BindsInstance
+        fun application(app: Application): Builder
+
+        fun build(): AppComponent
+    }
+
+    fun inject(app: App)
 }

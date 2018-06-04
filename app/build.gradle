@@ -24,11 +24,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':ui')
+
+    implementation libraries.supportAnnotations
+    implementation libraries.supportAppCompat
+    implementation libraries.supportDesign
+    implementation libraries.supportCardView
+    implementation libraries.supportRecyclerView
+    implementation libraries.supportCardView
+    implementation libraries.supportConstraintLayout
 
     implementation libraries.kotlin
 
@@ -36,13 +47,21 @@ dependencies {
     implementation libraries.rxAndroid
 
     implementation libraries.dagger
+    implementation libraries.daggerSupport
     kapt libraries.daggerCompiler
+
+    implementation libraries.architectureExtensions
+    implementation libraries.architectureViewModel
 
     implementation libraries.retrofit
     implementation libraries.retrofitGsonConverter
     implementation libraries.retrofitAdapter
 
+    implementation libraries.glide
+    kapt libraries.glideCompiler
+
     testImplementation libraries.jUnit
     androidTestImplementation libraries.testRunner
     androidTestImplementation libraries.testEspresso
+
 }
