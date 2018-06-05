@@ -6,7 +6,6 @@ import pro.itshark.moneysplitter.presentation.regLogin.RegLoginActivityViewModel
 import pro.itshark.moneysplitter.presentation.regLogin.login.LoginActions
 import javax.inject.Singleton
 
-
 @Module
 class ActionsModule {
     @Provides

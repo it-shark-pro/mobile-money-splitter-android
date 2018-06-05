@@ -4,8 +4,8 @@ import android.app.Application
 import dagger.Module
 import dagger.Provides
 import pro.itshark.moneysplitter.model.api.Api
-import pro.itshark.moneysplitter.model.UserDownloader
-import pro.itshark.moneysplitter.model.repository.UserRepository
+import pro.itshark.moneysplitter.model.repository.user.UserDownloader
+import pro.itshark.moneysplitter.model.repository.user.UserRepository
 import pro.itshark.moneysplitter.model.repository.events.EventsRepository
 import pro.itshark.moneysplitter.model.repository.events.EventsRepositoryImpl
 import javax.inject.Singleton

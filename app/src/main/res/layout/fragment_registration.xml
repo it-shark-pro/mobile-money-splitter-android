@@ -2,8 +2,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-        <variable name="viewmodel" type="pro.itshark.moneysplitter.presentation.regLogin.registration.RegistrationViewModel" />
-        <variable name="regLoginViewModel" type="pro.itshark.moneysplitter.presentation.regLogin.RegLoginActivityViewModel" />
+
+        <variable
+            name="viewModel"
+            type="pro.itshark.moneysplitter.presentation.regLogin.registration.RegistrationViewModel" />
+
+        <variable
+            name="regLoginViewModel"
+            type="pro.itshark.moneysplitter.presentation.regLogin.RegLoginActivityViewModel" />
     </data>
 
     <LinearLayout
@@ -14,82 +20,95 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="User Name" />
+            android:text="@string/user_name_text" />
 
         <EditText
-            android:id="@+id/userNameInput"
+            android:id="@+id/edit_text_registration_user_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@={viewModel.regCredits.name}" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Email" />
+            android:text="@string/user_email_text" />
 
         <EditText
-            android:id="@+id/emailInput"
+            android:id="@+id/edit_text_registration_email_input"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@={viewModel.regCredits.email}" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Password" />
+            android:text="@string/user_password_text" />
 
         <EditText
-            android:id="@+id/passwordInput"
+            android:id="@+id/edit_text_registration_password_input"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@={viewModel.regCredits.password}" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Surname" />
+            android:text="@string/user_name_text" />
 
         <EditText
-            android:id="@+id/surnameInput"
+            android:id="@+id/edit_text_registration_surname_input"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@={viewModel.regCredits.surname}" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Phone Number" />
+            android:text="@string/user_phone_number_text" />
 
         <EditText
-            android:id="@+id/phoneNumberInput"
+            android:id="@+id/edit_text_registration_phone_number_input"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@={viewModel.regCredits.phoneNumber}" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Credit Card Number" />
+            android:text="@string/user_credit_card_number_text" />
 
         <EditText
-            android:id="@+id/creditCardInput"
+            android:id="@+id/edit_text_registration_credit_card_input"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@={viewModel.regCredits.creditCardNumber}" />
 
         <LinearLayout
-            android:gravity="right"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="right"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/registrationBackToLoginButton"
-                android:text="@string/registration_login_button_text"
-                android:onClick="@{() -> regLoginViewModel.onOpenLogin()}"
+            <TextView
+                android:id="@+id/text_view_registration_error_message"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@string/registration_error_text"
+                android:visibility="invisible" />
 
             <Button
-                android:id="@+id/registrationRegButton"
-                android:text="@string/registration_reg_button_text"
+                android:id="@+id/button_registration_open_login"
                 android:layout_width="wrap_content"
-                android:onClick="@{_ -> viewmodel.onRegisterButtonClick()}"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> regLoginViewModel.onOpenLogin()}"
+                android:text="@string/registration_login_button_text" />
+
+            <Button
+                android:id="@+id/button_registration_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{_ -> viewModel.onRegisterButtonClick()}"
+                android:text="@string/registration_reg_button_text" />
         </LinearLayout>
     </LinearLayout>
 </layout>

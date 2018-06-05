@@ -17,27 +17,21 @@ import pro.itshark.moneysplitter.presentation.events.EventsActivity
 import pro.itshark.moneysplitter.presentation.regLogin.RegLoginActivityViewModel
 import javax.inject.Inject
 
-
 class LoginFragment: Fragment() {
-
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     lateinit var viewModel: LoginViewModel
     lateinit var loginActions: LoginActions
 
-
     private val stateObserver = Observer<LoginScreenState> { state ->
         state?.let {
             when (state) {
-                is LoginErrorState -> {
-                    loginErrorView.visibility = View.VISIBLE
-                }
-
+                is LoginErrorState -> text_view_login_error_message.visibility = View.VISIBLE
                 is LoginSuccessState -> {
                     context?.let {
                         EventsActivity.start(it)
                     }
-                    loginErrorView.visibility = View.INVISIBLE
+                    text_view_login_error_message.visibility = View.INVISIBLE
                 }
 
                 is OpenRegistrationState -> {
@@ -59,7 +53,7 @@ class LoginFragment: Fragment() {
 
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel::class.java)
         viewModel.stateLiveData.observe(this, stateObserver)
-        binding.viewmodel = viewModel
+        binding.viewModel = viewModel
 
         val regLoginViewModel = ViewModelProviders.of(this, viewModelFactory).get(RegLoginActivityViewModel::class.java)
         binding.regLoginViewModel = regLoginViewModel

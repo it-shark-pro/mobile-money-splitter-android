@@ -2,7 +2,6 @@ package pro.itshark.moneysplitter.presentation.regLogin
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import android.util.Log
 import pro.itshark.moneysplitter.presentation.regLogin.login.LoginActions
 import pro.itshark.moneysplitter.presentation.regLogin.registration.RegistrationActions
 import javax.inject.Inject
@@ -22,9 +21,5 @@ class RegLoginActivityViewModel
 
     override fun onOpenRegistration() {
         stateLiveData.value = OpenRegistrationState()
-    }
-
-    override fun onOpenMain() {
-        //stateLiveData.value = OpenMainState()
     }
 }

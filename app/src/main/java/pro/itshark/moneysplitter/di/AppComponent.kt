@@ -26,8 +26,7 @@ import javax.inject.Singleton
         RegistrationModule::class,
         ActionsModule::class,
         NewEventActivityModule::class,
-        UserProfileActivityModule::class,
-        ApplicationModule::class
+        UserProfileActivityModule::class
 ))
 interface AppComponent {
 

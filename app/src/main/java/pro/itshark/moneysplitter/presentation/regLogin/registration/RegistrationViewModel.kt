@@ -2,22 +2,30 @@ package pro.itshark.moneysplitter.presentation.regLogin.registration
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import pro.itshark.moneysplitter.domain.UserUseCases
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import pro.itshark.moneysplitter.domain.user.UserUseCases
+import pro.itshark.moneysplitter.model.pojo.UserEntry
 import javax.inject.Inject
 
 class RegistrationViewModel
 @Inject constructor(private val userUseCases: UserUseCases): ViewModel() {
-
+    val regCredits = RegistrationModel()
     val stateLiveData = MutableLiveData<RegistrationScreenStates>()
 
-    private fun onBackToLoginButtonClick() {
-
-    }
-
     fun onRegisterButtonClick() {
-/*        userUseCases.register(credits)
+        val credits = UserEntry.create(regCredits)
+        userUseCases.register(credits)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe()*/
+                .subscribe(this::onRegistrationSuccess, this::onError)
+    }
+
+    private fun onRegistrationSuccess(userEntry: UserEntry){
+        stateLiveData.value = RegistrationSuccessState()
+    }
+
+    private fun onError(error: Throwable) {
+        stateLiveData.value = RegistrationErrorState()
     }
 }

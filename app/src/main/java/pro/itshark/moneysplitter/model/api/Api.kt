@@ -16,11 +16,10 @@ import retrofit2.http.Header
 
 interface Api {
     @POST("session/register")
-    fun register(@Body user: UserEntry): Observable<UserEntry>
+    fun register(@Body userEntry: UserEntry): Observable<UserEntry>
 
-    @FormUrlEncoded
     @POST("session/signin")
-    fun login(@Field("Email") email: String, @Field("Password") password: String): Observable<UserEntry>
+    fun login(@Body userEntry: UserEntry): Observable<UserEntry>
 
     @GET("transactions/all")
     fun getEvents() : Single<List<EventEntry>>
