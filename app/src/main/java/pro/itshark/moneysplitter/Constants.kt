@@ -16,3 +16,5 @@ object PreferenceKey {
 }
 
 const val EMPTY_STRING = ""
+const val ZERO_LONG = 0L
+const val ZERO_FLOAT = 0f

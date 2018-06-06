@@ -13,7 +13,7 @@ import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_registration.*
 import pro.itshark.moneysplitter.R
 import pro.itshark.moneysplitter.databinding.FragmentRegistrationBinding
-import pro.itshark.moneysplitter.presentation.regLogin.RegLoginActivityViewModel
+import pro.itshark.moneysplitter.presentation.regLogin.RegLoginViewModel
 import javax.inject.Inject
 
 class RegistrationFragment: Fragment() {
@@ -43,9 +43,15 @@ class RegistrationFragment: Fragment() {
         viewModel.stateLiveData.observe(this, stateObserver)
         binding.viewModel = viewModel
 
-        val regLoginViewModel = ViewModelProviders.of(this, viewModelFactory).get(RegLoginActivityViewModel::class.java)
+        val regLoginViewModel = ViewModelProviders.of(this, viewModelFactory).get(RegLoginViewModel::class.java)
         binding.regLoginViewModel = regLoginViewModel
 
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        viewModel.stateLiveData.removeObserver(stateObserver)
     }
 }

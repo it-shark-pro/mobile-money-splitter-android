@@ -6,7 +6,7 @@ import dagger.MapKey
 import dagger.Module
 import dagger.multibindings.IntoMap
 import pro.itshark.moneysplitter.presentation.events.EventsViewModel
-import pro.itshark.moneysplitter.presentation.regLogin.RegLoginActivityViewModel
+import pro.itshark.moneysplitter.presentation.regLogin.RegLoginViewModel
 import pro.itshark.moneysplitter.presentation.regLogin.login.LoginViewModel
 import pro.itshark.moneysplitter.presentation.regLogin.registration.RegistrationViewModel
 import pro.itshark.moneysplitter.presentation.events.newevent.NewEventViewModel
@@ -40,18 +40,18 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @Singleton
-    @ViewModelKey(RegLoginActivityViewModel::class)
-    abstract fun bindRegLoginViewModel(regLoginActivityViewModel: RegLoginActivityViewModel): ViewModel
+    @ViewModelKey(RegLoginViewModel::class)
+    abstract fun bindRegLoginViewModel(regLoginViewModel: RegLoginViewModel): ViewModel
 
     @Binds
     @IntoMap
     @Singleton
     @ViewModelKey(LoginViewModel::class)
-    abstract fun bindLoginActivityViewModel(loginViewModel: LoginViewModel): ViewModel
+    abstract fun bindLoginViewModel(loginViewModel: LoginViewModel): ViewModel
 
     @Binds
     @IntoMap
     @Singleton
     @ViewModelKey(RegistrationViewModel::class)
-    abstract fun bindRegistrationActivityViewModel(registrationViewModel: RegistrationViewModel): ViewModel
+    abstract fun bindRegistrationViewModel(registrationViewModel: RegistrationViewModel): ViewModel
 }

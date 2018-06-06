@@ -30,4 +30,8 @@ class LoginViewModel
     private fun onError(error: Throwable) {
         stateLiveData.value = LoginErrorState(error.localizedMessage)
     }
+
+    fun showErrorMsg(): Boolean {
+        return stateLiveData.value is LoginErrorState
+    }
 }

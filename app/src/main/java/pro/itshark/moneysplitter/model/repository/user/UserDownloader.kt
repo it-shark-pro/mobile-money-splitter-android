@@ -12,11 +12,11 @@ import pro.itshark.moneysplitter.model.api.Api
 
 class UserDownloader(private val context: Context, private val api: Api) : UserRepository {
 
-    override fun login(userEntry: UserEntry): Observable<UserEntry> {
+    override fun login(userEntry: UserEntry): Single<UserEntry> {
         return api.login(userEntry)
     }
 
-    override fun register(userEntry: UserEntry): Observable<UserEntry> {
+    override fun register(userEntry: UserEntry): Single<UserEntry> {
         return api.register(userEntry)
     }
 

@@ -13,11 +13,11 @@ class UserInteractor(private val userRepository: UserRepository) : UserUseCases 
                 UserModel.create(user)
             }
 
-    override fun login(userEntry: UserEntry): Observable<UserEntry> {
+    override fun login(userEntry: UserEntry): Single<UserEntry> {
         return userRepository.login(userEntry)
     }
 
-    override fun register(userEntry: UserEntry): Observable<UserEntry> {
+    override fun register(userEntry: UserEntry): Single<UserEntry> {
         return userRepository.register(userEntry)
     }
 

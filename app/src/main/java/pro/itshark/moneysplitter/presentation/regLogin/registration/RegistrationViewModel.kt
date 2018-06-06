@@ -6,6 +6,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import pro.itshark.moneysplitter.domain.user.UserUseCases
 import pro.itshark.moneysplitter.model.pojo.UserEntry
+import pro.itshark.moneysplitter.presentation.regLogin.login.LoginErrorState
 import javax.inject.Inject
 
 class RegistrationViewModel
@@ -27,5 +28,9 @@ class RegistrationViewModel
 
     private fun onError(error: Throwable) {
         stateLiveData.value = RegistrationErrorState()
+    }
+
+    fun showErrorMsg(): Boolean {
+        return stateLiveData.value is RegistrationErrorState
     }
 }

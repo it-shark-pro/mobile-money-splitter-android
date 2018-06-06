@@ -2,6 +2,8 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+        <import type="pro.itshark.moneysplitter.presentation.regLogin.login.LoginErrorState"/>
+        <import type="android.view.View"/>
 
         <variable
             name="viewModel"
@@ -9,7 +11,7 @@
 
         <variable
             name="regLoginViewModel"
-            type="pro.itshark.moneysplitter.presentation.regLogin.RegLoginActivityViewModel" />
+            type="pro.itshark.moneysplitter.presentation.regLogin.RegLoginViewModel" />
     </data>
 
     <LinearLayout
@@ -94,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/registration_error_text"
-                android:visibility="invisible" />
+                android:visibility="@{viewModel.showErrorMsg() ? View.VISIBLE : View.INVISIBLE}" />
 
             <Button
                 android:id="@+id/button_registration_open_login"

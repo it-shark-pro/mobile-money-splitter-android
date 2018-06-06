@@ -7,8 +7,8 @@ import pro.itshark.moneysplitter.presentation.userProfile.UserModel
 
 interface UserUseCases {
     fun getUserInfo(): Single<UserModel>
-    fun register(userEntry: UserEntry) : Observable<UserEntry>
-    fun login(userEntry: UserEntry) : Observable<UserEntry>
+    fun register(userEntry: UserEntry) : Single<UserEntry>
+    fun login(userEntry: UserEntry) : Single<UserEntry>
     fun saveUserInfo(userEntry: UserEntry)
     fun loadUserToken(): String
 }

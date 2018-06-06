@@ -17,7 +17,7 @@ import javax.inject.Inject
 class RegLoginActivity: AppCompatActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    lateinit var viewModel: RegLoginActivityViewModel
+    lateinit var viewModel: RegLoginViewModel
 
     private val stateObserver = Observer<RegLoginState> { state ->
         state?.let {
@@ -32,7 +32,7 @@ class RegLoginActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         AndroidInjection.inject(this)
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(RegLoginActivityViewModel::class.java)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(RegLoginViewModel::class.java)
         viewModel.stateLiveData.observe(this, stateObserver)
 
         val binding: ActivityRegLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_reg_login)
@@ -49,5 +49,11 @@ class RegLoginActivity: AppCompatActivity() {
         supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, RegistrationFragment())
                 .commit()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        viewModel.stateLiveData.removeObserver(stateObserver)
     }
 }

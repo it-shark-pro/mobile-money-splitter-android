@@ -6,7 +6,7 @@ import pro.itshark.moneysplitter.presentation.regLogin.login.LoginActions
 import pro.itshark.moneysplitter.presentation.regLogin.registration.RegistrationActions
 import javax.inject.Inject
 
-class RegLoginActivityViewModel
+class RegLoginViewModel
 @Inject constructor() : ViewModel(), LoginActions, RegistrationActions {
 
     val stateLiveData = MutableLiveData<RegLoginState>()
