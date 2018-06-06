@@ -10,7 +10,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import dagger.android.support.AndroidSupportInjection
-import kotlinx.android.synthetic.main.fragment_registration.*
 import pro.itshark.moneysplitter.R
 import pro.itshark.moneysplitter.databinding.FragmentRegistrationBinding
 import pro.itshark.moneysplitter.presentation.regLogin.RegLoginViewModel
@@ -24,8 +23,8 @@ class RegistrationFragment: Fragment() {
     private val stateObserver = Observer<RegistrationScreenStates> { state ->
         state?.let {
             when (state) {
-                is RegistrationSuccessState -> text_view_registration_error_message.visibility = View.INVISIBLE
-                is RegistrationErrorState -> text_view_registration_error_message.visibility = View.VISIBLE
+                is RegistrationSuccessState -> {}
+                is RegistrationErrorState -> {}
             }
         }
     }

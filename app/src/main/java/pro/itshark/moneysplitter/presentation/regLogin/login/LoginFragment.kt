@@ -26,12 +26,11 @@ class LoginFragment: Fragment() {
     private val stateObserver = Observer<LoginScreenState> { state ->
         state?.let {
             when (state) {
-                is LoginErrorState -> text_view_login_error_message.visibility = View.VISIBLE
+                is LoginErrorState -> {}
                 is LoginSuccessState -> {
                     context?.let {
                         EventsActivity.start(it)
                     }
-                    text_view_login_error_message.visibility = View.INVISIBLE
                 }
 
                 is OpenRegistrationState -> {
