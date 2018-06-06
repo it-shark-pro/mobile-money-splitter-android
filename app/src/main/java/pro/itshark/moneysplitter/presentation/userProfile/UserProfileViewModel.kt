@@ -3,7 +3,7 @@ package pro.itshark.moneysplitter.presentation.userProfile
 import android.arch.lifecycle.ViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import pro.itshark.moneysplitter.domain.UserUseCases
+import pro.itshark.moneysplitter.domain.user.UserUseCases
 import javax.inject.Inject
 
 class UserProfileViewModel
