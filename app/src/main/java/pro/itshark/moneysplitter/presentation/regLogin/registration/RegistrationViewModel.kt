@@ -13,10 +13,10 @@ class RegistrationViewModel
 @Inject constructor(private val userUseCases: UserUseCases) : ViewModel() {
     val regCredits = RegistrationModel()
     val stateLiveData = MutableLiveData<RegistrationScreenStates>()
-    val requestFailed: ObservableField<Boolean> = ObservableField(false)
+    val isRequestSuccess: ObservableField<Boolean> = ObservableField(false)
 
     fun onRegisterButtonClick() {
-        requestFailed.set(false)
+        isRequestSuccess.set(false)
         stateLiveData.value = RegistrationRequestSendState()
 
         val credits = UserEntry.create(regCredits)
@@ -27,12 +27,12 @@ class RegistrationViewModel
     }
 
     private fun onRegistrationSuccess(userEntry: UserEntry) {
-        requestFailed.set(false)
+        isRequestSuccess.set(false)
         stateLiveData.value = RegistrationSuccessState()
     }
 
     private fun onError(error: Throwable) {
-        requestFailed.set(true)
+        isRequestSuccess.set(true)
         stateLiveData.value = RegistrationErrorState()
     }
 }
