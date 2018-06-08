@@ -84,7 +84,7 @@
                 android:id="@+id/button_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="@{_ -> viewModel.onLoginButtonClick()}"
+                android:onClick="@{() -> viewModel.onLoginButtonClick()}"
                 android:text="@string/login_text" />
 
             <TextView
@@ -95,7 +95,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/spacing_content"
                 android:layout_marginTop="@dimen/spacing_content"
-                android:onClick="@{_ -> regLoginViewModel.onOpenRegistration()}"
+                android:onClick="@{() -> regLoginViewModel.onOpenRegistration()}"
                 android:text="@string/login_create_account_text" />
 
             <TextView
