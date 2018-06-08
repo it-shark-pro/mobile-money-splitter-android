@@ -2,8 +2,10 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-        <import type="pro.itshark.moneysplitter.presentation.regLogin.login.LoginErrorState"/>
-        <import type="android.view.View"/>
+
+        <import type="pro.itshark.moneysplitter.presentation.regLogin.login.LoginErrorState" />
+
+        <import type="android.view.View" />
 
         <variable
             name="viewModel"
@@ -17,100 +19,129 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/spacing_screen"
+        android:layout_marginRight="@dimen/spacing_screen"
+        android:layout_marginTop="@dimen/spacing_screen"
         android:orientation="vertical">
 
-        <TextView
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_registration_user_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/user_name_text" />
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/edit_text_registration_user_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@={viewModel.regCredits.name}" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/user_email_text" />
-
-        <EditText
-            android:id="@+id/edit_text_registration_email_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@={viewModel.regCredits.email}" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/user_password_text" />
-
-        <EditText
-            android:id="@+id/edit_text_registration_password_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@={viewModel.regCredits.password}" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/user_name_text" />
-
-        <EditText
-            android:id="@+id/edit_text_registration_surname_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@={viewModel.regCredits.surname}" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/user_phone_number_text" />
-
-        <EditText
-            android:id="@+id/edit_text_registration_phone_number_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@={viewModel.regCredits.phoneNumber}" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/user_credit_card_number_text" />
-
-        <EditText
-            android:id="@+id/edit_text_registration_credit_card_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@={viewModel.regCredits.creditCardNumber}" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/text_view_registration_error_message"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/edit_text_registration_user_name"
+                style="@style/TextAppearance.Subheading.Primary"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/registration_error_text"
-                android:visibility="@{viewModel.showErrorMsg() ? View.VISIBLE : View.INVISIBLE}" />
+                android:hint="@string/user_name_text"
+                android:singleLine="true"
+                android:text="@={viewModel.regCredits.name}" />
+        </android.support.design.widget.TextInputLayout>
 
-            <Button
-                android:id="@+id/button_registration_open_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{() -> regLoginViewModel.onOpenLogin()}"
-                android:text="@string/registration_login_button_text" />
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_registration_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_content"
+            android:layout_marginTop="@dimen/spacing_content">
 
-            <Button
-                android:id="@+id/button_registration_register"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/edit_text_registration_email_input"
+                style="@style/TextAppearance.Subheading.Primary"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="@{_ -> viewModel.onRegisterButtonClick()}"
-                android:text="@string/registration_reg_button_text" />
-        </LinearLayout>
+                android:hint="@string/user_email_text"
+                android:singleLine="true"
+                android:text="@={viewModel.regCredits.email}" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_registration_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edit_text_registration_password_input"
+                style="@style/TextAppearance.Subheading.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/user_password_text"
+                android:singleLine="true"
+                android:text="@={viewModel.regCredits.password}" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_registration_surname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_content"
+            android:layout_marginTop="@dimen/spacing_content">
+
+            <EditText
+                android:id="@+id/edit_text_registration_surname_input"
+                style="@style/TextAppearance.Subheading.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/user_surname_text"
+                android:singleLine="true"
+                android:text="@={viewModel.regCredits.surname}" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_registration_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edit_text_registration_phone_number_input"
+                style="@style/TextAppearance.Subheading.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/user_phone_number_text"
+                android:singleLine="true"
+                android:text="@={viewModel.regCredits.phoneNumber}" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_registration_credit_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_content"
+            android:layout_marginTop="@dimen/spacing_content">
+
+            <EditText
+                android:id="@+id/edit_text_registration_credit_card_input"
+                style="@style/TextAppearance.Subheading.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/user_credit_card_number_text"
+                android:singleLine="true"
+                android:text="@={viewModel.regCredits.creditCardNumber}" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/button_registration_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{_ -> viewModel.onRegisterButtonClick()}"
+            android:text="@string/registration_create_account_text" />
+
+        <TextView
+            style="@style/TextAppearance.Body2.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_content"
+            android:layout_marginTop="@dimen/spacing_content"
+            android:gravity="center_horizontal"
+            android:onClick="@{() -> regLoginViewModel.onOpenLogin()}"
+            android:text="@string/registration_back_to_login_text" />
+
+        <TextView
+            android:id="@+id/text_view_registration_error_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/registration_error_text"
+            android:visibility="@{viewModel.showErrorMsg() ? View.VISIBLE : View.INVISIBLE}" />
     </LinearLayout>
 </layout>

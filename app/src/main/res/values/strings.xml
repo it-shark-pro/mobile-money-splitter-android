@@ -10,9 +10,10 @@
 
     <!-- RegLogin -->
     <string name="login_error_text">Sorry, something went wrong</string>
-    <string name="registration_reg_button_text">Register</string>
-    <string name="login_text">Login</string>
-    <string name="registration_login_button_text">Back to Login</string>
+    <string name="registration_create_account_text">CREATE ACCOUNT</string>
+    <string name="registration_back_to_login_text">Already a member? Login</string>
+    <string name="login_create_account_text">No account yet? Create one</string>
+    <string name="login_text">LOGIN</string>
     <string name="registration_error_text">Sorry, something went wrong</string>
 
     <!-- User Data-->
