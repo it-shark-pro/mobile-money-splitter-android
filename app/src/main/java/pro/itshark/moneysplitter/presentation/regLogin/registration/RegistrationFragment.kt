@@ -19,12 +19,13 @@ class RegistrationFragment: Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     lateinit var viewModel: RegistrationViewModel
+    lateinit var registrationActions: RegistrationActions
 
     private val stateObserver = Observer<RegistrationScreenStates> { state ->
         state?.let {
             when (state) {
-                is RegistrationSuccessState -> {}
-                is RegistrationErrorState -> {}
+                is RegistrationSuccessState, is RegistrationErrorState -> registrationActions.onResponseGet()
+                is RegistrationRequestSendState -> registrationActions.onRequestSend()
             }
         }
     }
@@ -43,6 +44,7 @@ class RegistrationFragment: Fragment() {
         binding.viewModel = viewModel
 
         val regLoginViewModel = ViewModelProviders.of(this, viewModelFactory).get(RegLoginViewModel::class.java)
+        registrationActions = regLoginViewModel
         binding.regLoginViewModel = regLoginViewModel
 
         return binding.root

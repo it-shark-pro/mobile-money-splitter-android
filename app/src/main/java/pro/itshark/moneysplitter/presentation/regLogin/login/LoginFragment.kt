@@ -10,7 +10,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import dagger.android.support.AndroidSupportInjection
-import kotlinx.android.synthetic.main.fragment_login.*
 import pro.itshark.moneysplitter.R
 import pro.itshark.moneysplitter.databinding.FragmentLoginBinding
 import pro.itshark.moneysplitter.presentation.events.EventsActivity
@@ -26,16 +25,16 @@ class LoginFragment: Fragment() {
     private val stateObserver = Observer<LoginScreenState> { state ->
         state?.let {
             when (state) {
-                is LoginErrorState -> {}
                 is LoginSuccessState -> {
+                    loginActions.onResponseGet()
                     context?.let {
                         EventsActivity.start(it)
                     }
                 }
 
-                is OpenRegistrationState -> {
-                    loginActions.onOpenRegistration()
-                }
+                is LoginErrorState -> loginActions.onResponseGet()
+                is LoginRequestSendState -> loginActions.onRequestSend()
+                is OpenRegistrationState -> loginActions.onOpenRegistration()
             }
         }
     }
@@ -55,6 +54,7 @@ class LoginFragment: Fragment() {
         binding.viewModel = viewModel
 
         val regLoginViewModel = ViewModelProviders.of(this, viewModelFactory).get(RegLoginViewModel::class.java)
+        loginActions = regLoginViewModel
         binding.regLoginViewModel = regLoginViewModel
 
         return binding.root

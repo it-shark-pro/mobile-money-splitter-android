@@ -124,7 +124,7 @@
             android:id="@+id/button_registration_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="@{_ -> viewModel.onRegisterButtonClick()}"
+            android:onClick="@{() -> viewModel.onRegisterButtonClick()}"
             android:text="@string/registration_create_account_text" />
 
         <TextView
@@ -140,8 +140,9 @@
         <TextView
             android:id="@+id/text_view_registration_error_message"
             android:layout_width="match_parent"
+            android:gravity="center_horizontal"
             android:layout_height="wrap_content"
             android:text="@string/registration_error_text"
-            android:visibility="@{viewModel.showErrorMsg() ? View.VISIBLE : View.INVISIBLE}" />
+            android:visibility="@{viewModel.isResponseSuccess ? View.INVISIBLE : View.VISIBLE}"/>
     </LinearLayout>
 </layout>
