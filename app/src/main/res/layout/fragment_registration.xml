@@ -147,9 +147,9 @@
         <TextView
             android:id="@+id/text_view_registration_error_message"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:gravity="center_horizontal"
+            android:layout_height="wrap_content"
             android:text="@string/registration_error_text"
-            android:visibility="@{viewModel.isRequestSuccess ? View.VISIBLE : View.INVISIBLE}" />
+            android:visibility="@{viewModel.isResponseSuccess ? View.INVISIBLE : View.VISIBLE}"/>
     </LinearLayout>
 </layout>

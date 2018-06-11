@@ -105,14 +105,14 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="@string/login_error_text"
-                android:visibility="@{viewModel.isRequestSuccess ? View.VISIBLE : View.INVISIBLE}" />
+                android:visibility="@{viewModel.isResponseSuccess() ? View.INVISIBLE : View.VISIBLE}" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:onClick="@{() -> viewModel.onSetTestCreditsButtonClick()}"
-                android:text="Set Credits" />
+                android:text="@string/login_set_test_credits_button" />
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>
 </layout>
