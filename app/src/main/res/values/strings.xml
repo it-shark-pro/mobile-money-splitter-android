@@ -1,12 +1,17 @@
 <resources>
-    <string name="app_name">ui</string>
+    <string name="app_name">Money Splitter</string>
+
+    <string name="failed">Failed</string>
+    <string name="nothing_to_show">Nothing to show</string>
+
+    <!-- New event-->
+    <string name="new_event">New event</string>
     <string name="event_title">Event title</string>
     <string name="event_description">Event description</string>
-    <string name="create_event">CREATE EVENT</string>
-    <string name="new_event">New event</string>
     <string name="cost">Cost</string>
-    <string name="wait">Please wait</string>
     <string name="select_picture_title">Select picture</string>
+    <string name="wait">Please wait</string>
+    <string name="create_event">CREATE EVENT</string>
 
     <!-- RegLogin -->
     <string name="login_error_text">Sorry, something went wrong</string>
@@ -24,4 +29,10 @@
     <string name="user_surname_text">Surname</string>
     <string name="user_phone_number_text">Phone Number</string>
     <string name="user_credit_card_number_text">Credit card number</string>
+
+    <!-- Add users-->
+    <string name="add_users">Add users</string>
+    <string name="confirm">Confirm</string>
+    <string name="full_name">%s %s</string>
+
 </resources>

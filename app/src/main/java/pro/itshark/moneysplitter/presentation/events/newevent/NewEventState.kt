@@ -7,6 +7,7 @@ sealed class NewEventState {
 }
 
 data class DefaultState(override val event: EventModel) : NewEventState()
+data class AdditionState(override val event: EventModel) : NewEventState()
 data class SendingState(override val event: EventModel) : NewEventState()
 data class SuccessState(override val event: EventModel) : NewEventState()
 data class ChoosingImageState(override val event: EventModel) : NewEventState()

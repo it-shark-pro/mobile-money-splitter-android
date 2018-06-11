@@ -2,6 +2,14 @@ package pro.itshark.moneysplitter
 
 const val BASE_URL = "https://moneytransfer.azurewebsites.net/"
 
+object Timeout {
+    const val connect: Long = 30
+    const val read: Long = 60
+    const val write: Long = 60
+
+    const val debounce: Long = 300
+}
+
 object PreferenceKey {
     const val ID = "id"
     const val NAME = "name"
@@ -13,6 +21,10 @@ object PreferenceKey {
     const val TOKEN = "token"
     const val IMAGE_URL = "image_url"
     const val BACKGROUND_IMAGE_URL = "background image url"
+}
+
+object IntentKey {
+    const val users = "users"
 }
 
 const val EMPTY_STRING = ""

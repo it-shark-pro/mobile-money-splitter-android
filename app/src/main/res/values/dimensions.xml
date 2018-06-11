@@ -2,4 +2,5 @@
 <resources>
     <dimen name="spacing_screen">16dp</dimen>
     <dimen name="spacing_content">8dp</dimen>
+    <dimen name="image_size">60dp</dimen>
 </resources>

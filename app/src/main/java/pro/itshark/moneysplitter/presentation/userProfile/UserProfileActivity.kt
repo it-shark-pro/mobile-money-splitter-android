@@ -8,10 +8,7 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import dagger.android.AndroidInjection
-import pro.itshark.moneysplitter.PreferenceKey
 import pro.itshark.moneysplitter.R
-import pro.itshark.moneysplitter.common.PreferenceHelper.defaultSharedPreferences
-import pro.itshark.moneysplitter.common.PreferenceHelper.set
 import pro.itshark.moneysplitter.databinding.ActivityUserProfileBinding
 import javax.inject.Inject
 
@@ -29,22 +26,14 @@ class UserProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        initPref()
-        AndroidInjection.inject(this)
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(UserProfileViewModel::class.java)
-
-        val binding: ActivityUserProfileBinding = DataBindingUtil.setContentView(this, R.layout.activity_user_profile)
-
-        binding.viewModel = viewModel
+        init()
     }
 
-    // TODO delete in the future
-    private fun initPref() {
-        val pref = defaultSharedPreferences(this)
+    private fun init() {
+        AndroidInjection.inject(this)
 
-        pref[PreferenceKey.NAME] = "Yauheni"
-        pref[PreferenceKey.SURNAME] = "Vasileuski"
-        pref[PreferenceKey.EMAIL] = "email"
-        pref[PreferenceKey.IMAGE_URL] = "https://cdn.img.inosmi.ru/images/24126/31/241263151.jpg"
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(UserProfileViewModel::class.java)
+
+        DataBindingUtil.setContentView<ActivityUserProfileBinding>(this, R.layout.activity_user_profile).viewModel = viewModel
     }
 }

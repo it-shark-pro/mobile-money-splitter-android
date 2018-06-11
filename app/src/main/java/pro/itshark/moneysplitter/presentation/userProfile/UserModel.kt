@@ -2,23 +2,28 @@ package pro.itshark.moneysplitter.presentation.userProfile
 
 import android.databinding.BaseObservable
 import android.databinding.Bindable
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 import pro.itshark.moneysplitter.BR
 import pro.itshark.moneysplitter.EMPTY_STRING
+import pro.itshark.moneysplitter.ZERO_FLOAT
+import pro.itshark.moneysplitter.ZERO_LONG
 import pro.itshark.moneysplitter.model.pojo.UserEntry
 
+@Parcelize
 class UserModel(
-        var id: Long = 0,
-        email: String = EMPTY_STRING,
-        name: String = EMPTY_STRING,
-        surname: String = EMPTY_STRING,
-        phoneNumber: Long = 0,
-        creditCardNumber: Long = 0,
-        balance: Float = 0F,
-        token: String = EMPTY_STRING,
-        imageUrl: String = EMPTY_STRING,
-        backgroundImageUrl: String = EMPTY_STRING
-) : BaseObservable() {
-
+        private val _id: Long = ZERO_LONG,
+        private var _email: String = EMPTY_STRING,
+        private var _name: String = EMPTY_STRING,
+        private var _surname: String = EMPTY_STRING,
+        private var _phoneNumber: Long = ZERO_LONG,
+        private var _creditCardNumber: Long = ZERO_LONG,
+        private var _balance: Float = ZERO_FLOAT,
+        private var _token: String = EMPTY_STRING,
+        private var _imageUrl: String = EMPTY_STRING,
+        private var _backgroundImageUrl: String = EMPTY_STRING
+) : BaseObservable(),
+        Parcelable {
     companion object {
         fun create(userEntry: UserEntry): UserModel = UserModel(
                 userEntry.id,
@@ -34,66 +39,69 @@ class UserModel(
         )
     }
 
-    var email: String = email
-        @Bindable get
+    val id: Long
+        get() = _id
+
+    var email: String
+        @Bindable get() = _email
         set(value) {
-            field = value
+            _email = value
             notifyPropertyChanged(BR.email)
         }
 
-    var name: String = name
-        @Bindable get
+    var name: String
+        @Bindable get() = _name
         set(value) {
-            field = value
+            _name = value
             notifyPropertyChanged(BR.name)
         }
 
-    var surname: String = surname
-        @Bindable get
+    var surname: String
+        @Bindable get() = _surname
         set(value) {
-            field = value
+            _surname = value
             notifyPropertyChanged(BR.surname)
         }
 
-    var phoneNumber: Long = phoneNumber
-        @Bindable get
+    var phoneNumber: Long
+        @Bindable get() = _phoneNumber
         set(value) {
-            field = value
+            _phoneNumber = value
             notifyPropertyChanged(BR.phoneNumber)
         }
 
-    var creditCardNumber: Long = creditCardNumber
-        @Bindable get
+    var creditCardNumber: Long
+        @Bindable get() = _creditCardNumber
         set(value) {
-            field = value
+            _creditCardNumber = value
             notifyPropertyChanged(BR.creditCardNumber)
         }
 
-    var balance: Float = balance
-        @Bindable get
+    var balance: Float
+        @Bindable get() = _balance
         set(value) {
-            field = value
+            _balance = value
             notifyPropertyChanged(BR.balance)
         }
 
-    var token: String = token
-        @Bindable get
+    var token: String
+        @Bindable get() = _token
         set(value) {
-            field = value
+            _token = value
             notifyPropertyChanged(BR.token)
         }
 
-    var imageUrl: String = imageUrl
-        @Bindable get
+    var imageUrl: String
+        @Bindable get() = _imageUrl
         set(value) {
-            field = value
+            _imageUrl = value
             notifyPropertyChanged(BR.imageUrl)
         }
 
-    var backgroundImageUrl: String = backgroundImageUrl
-        @Bindable get
+    var backgroundImageUrl: String
+        @Bindable get() = _backgroundImageUrl
         set(value) {
-            field = value
+            _backgroundImageUrl = value
             notifyPropertyChanged(BR.backgroundImageUrl)
         }
 

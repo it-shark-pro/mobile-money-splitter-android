@@ -15,8 +15,10 @@ import android.view.View
 import android.widget.Toast
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_add_event.*
+import pro.itshark.moneysplitter.IntentKey
 import pro.itshark.moneysplitter.R
 import pro.itshark.moneysplitter.databinding.ActivityAddEventBinding
+import pro.itshark.moneysplitter.presentation.addUsers.AddUsersActivity
 import javax.inject.Inject
 
 class NewEventActivity : AppCompatActivity() {
@@ -31,6 +33,7 @@ class NewEventActivity : AppCompatActivity() {
 
     private lateinit var viewModel: NewEventViewModel
 
+    private val SELECT_USERS_CODE = 2
     private val PICK_IMAGE_CODE = 3
 
     private val stateObserver = Observer<NewEventState> { state ->
@@ -38,6 +41,10 @@ class NewEventActivity : AppCompatActivity() {
             when (state) {
                 is DefaultState -> {
                     dialog.dismiss()
+                }
+                is AdditionState -> {
+                    dialog.dismiss()
+                    AddUsersActivity.startForResult(this, SELECT_USERS_CODE)
                 }
                 is SendingState -> {
                     dialog.show()
@@ -51,7 +58,7 @@ class NewEventActivity : AppCompatActivity() {
                     chooseImage()
                 }
                 is ErrorState -> {
-                    Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.failed), Toast.LENGTH_SHORT).show()
                     dialog.dismiss()
                 }
             }
@@ -62,6 +69,17 @@ class NewEventActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         init()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == Activity.RESULT_OK) {
+            when (requestCode) {
+                SELECT_USERS_CODE -> data?.getParcelableArrayExtra(IntentKey.users)?.toList() // TODO use in the future
+                PICK_IMAGE_CODE -> viewModel.onChoosingImageResult(data!!.data)
+            }
+        }
+
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     private fun init() {
@@ -92,14 +110,6 @@ class NewEventActivity : AppCompatActivity() {
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
         startActivityForResult(Intent.createChooser(intent, getString(R.string.select_picture_title)), PICK_IMAGE_CODE)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == PICK_IMAGE_CODE && resultCode == Activity.RESULT_OK) {
-            viewModel.onChoosingImageResult(data!!.data)
-        }
-
-        super.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

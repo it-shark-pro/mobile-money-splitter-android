@@ -5,6 +5,7 @@ import dagger.BindsInstance
 import dagger.Component
 import pro.itshark.moneysplitter.App
 import pro.itshark.moneysplitter.di.modules.*
+import pro.itshark.moneysplitter.presentation.addUsers.AddUsersActivityModule
 import pro.itshark.moneysplitter.presentation.events.EventsActivityModule
 import pro.itshark.moneysplitter.presentation.events.newevent.NewEventActivityModule
 import pro.itshark.moneysplitter.presentation.regLogin.RegLoginModule
@@ -14,24 +15,26 @@ import pro.itshark.moneysplitter.presentation.userProfile.UserProfileActivityMod
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = arrayOf(
-        NetworkModule::class,
-        ViewModelFactoryModule::class,
-        ViewModelModule::class,
-        UseCasesModule::class,
-        RepositoryModule::class,
-        EventsActivityModule::class,
-        RegLoginModule::class,
-        LoginModule::class,
-        RegistrationModule::class,
-        ActionsModule::class,
-        NewEventActivityModule::class,
-        UserProfileActivityModule::class
-))
+@Component(modules = [
+    (NetworkModule::class),
+    (ViewModelFactoryModule::class),
+    (ViewModelModule::class),
+    (UseCasesModule::class),
+    (RepositoryModule::class),
+    (EventsActivityModule::class),
+    (RegLoginModule::class),
+    (LoginModule::class),
+    (RegistrationModule::class),
+    (ActionsModule::class),
+    (NewEventActivityModule::class),
+    (UserProfileActivityModule::class),
+    (AddUsersActivityModule::class)
+])
 interface AppComponent {
 
     @Component.Builder
     interface Builder {
+
         @BindsInstance
         fun application(app: Application): Builder
 
