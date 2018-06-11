@@ -13,10 +13,10 @@ class LoginViewModel
 @Inject constructor(private val userUseCases: UserUseCases): ViewModel() {
     val stateLiveData = MutableLiveData<LoginScreenState>()
     val credits = LoginModel()
-    val isRequestSuccess: ObservableField<Boolean> = ObservableField(false)
+    val isResponseSuccess: ObservableField<Boolean> = ObservableField(true)
 
     fun onLoginButtonClick() {
-        isRequestSuccess.set(false)
+        isResponseSuccess.set(true)
         stateLiveData.value = LoginRequestSendState()
 
         val credits = UserEntry(email = credits.email, password = credits.password)
@@ -27,13 +27,13 @@ class LoginViewModel
     }
 
     private fun onLoginSuccess(userEntry: UserEntry) {
-        isRequestSuccess.set(false)
+        isResponseSuccess.set(true)
         stateLiveData.value = LoginSuccessState(userEntry)
         userUseCases.saveUserInfo(userEntry)
     }
 
     private fun onError(error: Throwable) {
-        isRequestSuccess.set(true)
+        isResponseSuccess.set(false)
         stateLiveData.value = LoginErrorState(error.localizedMessage)
     }
 }
