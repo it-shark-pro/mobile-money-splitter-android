@@ -2,6 +2,7 @@ package pro.itshark.moneysplitter.presentation.regLogin.login
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import android.databinding.ObservableField
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import pro.itshark.moneysplitter.domain.users.UsersUseCases
@@ -10,11 +11,15 @@ import javax.inject.Inject
 
 class LoginViewModel
 @Inject constructor(private val usersUseCases: UsersUseCases): ViewModel() {
+
     val stateLiveData = MutableLiveData<LoginScreenState>()
-
     val credits = LoginModel()
+    val isResponseSuccess: ObservableField<Boolean> = ObservableField(true)
 
-    fun login() {
+    fun onLoginButtonClick() {
+        isResponseSuccess.set(true)
+        stateLiveData.value = LoginRequestSendState()
+
         val credits = UserEntry(email = credits.email, password = credits.password)
         usersUseCases.login(credits)
                 .subscribeOn(Schedulers.io())
@@ -23,15 +28,13 @@ class LoginViewModel
     }
 
     private fun onLoginSuccess(userEntry: UserEntry) {
-        usersUseCases.saveUserInfo(userEntry)
+        isResponseSuccess.set(true)
         stateLiveData.value = LoginSuccessState(userEntry)
+        usersUseCases.saveUserInfo(userEntry)
     }
 
     private fun onError(error: Throwable) {
+        isResponseSuccess.set(false)
         stateLiveData.value = LoginErrorState(error.localizedMessage)
-    }
-
-    fun showErrorMsg(): Boolean {
-        return stateLiveData.value is LoginErrorState
     }
 }

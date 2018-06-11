@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
-        <variable name="viewModel" type="pro.itshark.moneysplitter.presentation.regLogin.RegLoginViewModel" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="pro.itshark.moneysplitter.presentation.regLogin.RegLoginViewModel" />
     </data>
 
     <FrameLayout
-        android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/fragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <include
+            android:id="@+id/progress_layout"
+            layout="@layout/progress_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{viewModel.showProgressBar ? View.VISIBLE : View.INVISIBLE}" />
+    </FrameLayout>
 </layout>

@@ -2,6 +2,7 @@ package pro.itshark.moneysplitter.presentation.regLogin.registration
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import android.databinding.ObservableField
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import pro.itshark.moneysplitter.domain.users.UsersUseCases
@@ -12,8 +13,12 @@ class RegistrationViewModel
 @Inject constructor(private val usersUseCases: UsersUseCases): ViewModel() {
     val regCredits = RegistrationModel()
     val stateLiveData = MutableLiveData<RegistrationScreenStates>()
+    val isResponseSuccess: ObservableField<Boolean> = ObservableField(true)
 
     fun onRegisterButtonClick() {
+        isResponseSuccess.set(true)
+        stateLiveData.value = RegistrationRequestSendState()
+
         val credits = UserEntry.create(regCredits)
         usersUseCases.register(credits)
                 .subscribeOn(Schedulers.io())
@@ -21,15 +26,13 @@ class RegistrationViewModel
                 .subscribe(this::onRegistrationSuccess, this::onError)
     }
 
-    private fun onRegistrationSuccess(userEntry: UserEntry){
+    private fun onRegistrationSuccess(userEntry: UserEntry) {
+        isResponseSuccess.set(true)
         stateLiveData.value = RegistrationSuccessState()
     }
 
     private fun onError(error: Throwable) {
+        isResponseSuccess.set(false)
         stateLiveData.value = RegistrationErrorState()
-    }
-
-    fun showErrorMsg(): Boolean {
-        return stateLiveData.value is RegistrationErrorState
     }
 }
