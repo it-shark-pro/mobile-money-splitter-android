@@ -35,6 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/user_name_text"
+                android:inputType="textPersonName"
                 android:singleLine="true"
                 android:text="@={viewModel.regCredits.name}" />
         </android.support.design.widget.TextInputLayout>
@@ -52,6 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/user_email_text"
+                android:inputType="textEmailAddress"
                 android:singleLine="true"
                 android:text="@={viewModel.regCredits.email}" />
         </android.support.design.widget.TextInputLayout>
@@ -67,6 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/user_password_text"
+                android:inputType="textVisiblePassword"
                 android:singleLine="true"
                 android:text="@={viewModel.regCredits.password}" />
         </android.support.design.widget.TextInputLayout>
@@ -84,6 +87,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/user_surname_text"
+                android:inputType="textPersonName"
                 android:singleLine="true"
                 android:text="@={viewModel.regCredits.surname}" />
         </android.support.design.widget.TextInputLayout>
@@ -99,6 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/user_phone_number_text"
+                android:inputType="phone"
                 android:singleLine="true"
                 android:text="@={viewModel.regCredits.phoneNumber}" />
         </android.support.design.widget.TextInputLayout>
@@ -116,19 +121,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/user_credit_card_number_text"
+                android:inputType="number"
                 android:singleLine="true"
                 android:text="@={viewModel.regCredits.creditCardNumber}" />
         </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/button_registration_register"
+            style="@style/TextAppearance.Button.Base"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="@{() -> viewModel.onRegisterButtonClick()}"
             android:text="@string/registration_create_account_text" />
 
         <TextView
-            style="@style/TextAppearance.Body2.Primary"
+            style="@style/TextAppearance.Button.Base"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/spacing_content"
@@ -140,9 +147,9 @@
         <TextView
             android:id="@+id/text_view_registration_error_message"
             android:layout_width="match_parent"
-            android:gravity="center_horizontal"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:text="@string/registration_error_text"
-            android:visibility="@{viewModel.isRequestSuccess ? View.VISIBLE : View.INVISIBLE}"/>
+            android:visibility="@{viewModel.isRequestSuccess ? View.VISIBLE : View.INVISIBLE}" />
     </LinearLayout>
 </layout>

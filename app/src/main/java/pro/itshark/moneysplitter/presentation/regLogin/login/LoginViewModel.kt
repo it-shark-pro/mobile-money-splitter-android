@@ -10,10 +10,12 @@ import pro.itshark.moneysplitter.model.pojo.UserEntry
 import javax.inject.Inject
 
 class LoginViewModel
-@Inject constructor(private val userUseCases: UserUseCases): ViewModel() {
+@Inject constructor(private val userUseCases: UserUseCases) : ViewModel() {
     val stateLiveData = MutableLiveData<LoginScreenState>()
     val credits = LoginModel()
     val isRequestSuccess: ObservableField<Boolean> = ObservableField(false)
+
+    var testCreditsClickCounter = 0
 
     fun onLoginButtonClick() {
         isRequestSuccess.set(false)
@@ -35,5 +37,10 @@ class LoginViewModel
     private fun onError(error: Throwable) {
         isRequestSuccess.set(true)
         stateLiveData.value = LoginErrorState(error.localizedMessage)
+    }
+
+    fun onSetTestCreditsButtonClick() {
+        testCreditsClickCounter++
+        stateLiveData.value = LoginSetTestCreditsState(testCreditsClickCounter)
     }
 }

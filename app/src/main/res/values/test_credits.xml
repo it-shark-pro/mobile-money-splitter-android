@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- RegLogin :: Set Credits -->
+    <string name="login_set_test_credits_password">1234abcd</string>
+
+    <string name="login_set_test_credits_email_1">vlad_nagibator12@mail.ru</string>
+    <string name="login_set_test_credits_email_2">ekaterina_kuznetsova@mail.ru</string>
+    <string name="login_set_test_credits_email_3">ivan_17@epam.com</string>
+    <string name="login_set_test_credits_email_4">rodion_geforevich@yandex.ru</string>
+
+    <array name="test_emails">
+        <item>@string/login_set_test_credits_email_1</item>
+        <item>@string/login_set_test_credits_email_2</item>
+        <item>@string/login_set_test_credits_email_3</item>
+        <item>@string/login_set_test_credits_email_4</item>
+    </array>
+</resources>

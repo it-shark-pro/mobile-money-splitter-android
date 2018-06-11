@@ -6,17 +6,20 @@ import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import dagger.android.support.AndroidSupportInjection
+import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.fragment_registration.*
 import pro.itshark.moneysplitter.R
 import pro.itshark.moneysplitter.databinding.FragmentLoginBinding
 import pro.itshark.moneysplitter.presentation.events.EventsActivity
 import pro.itshark.moneysplitter.presentation.regLogin.RegLoginViewModel
 import javax.inject.Inject
 
-class LoginFragment: Fragment() {
+class LoginFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     lateinit var viewModel: LoginViewModel
@@ -35,6 +38,16 @@ class LoginFragment: Fragment() {
                 is LoginErrorState -> loginActions.onResponseGet()
                 is LoginRequestSendState -> loginActions.onRequestSend()
                 is OpenRegistrationState -> loginActions.onOpenRegistration()
+                is LoginSetTestCreditsState -> {
+                    val emails = resources.getStringArray(R.array.test_emails)
+                    val emailPosition = (state.clickCounter - 1) % emails.size
+                    val email = emails[emailPosition]
+
+                    val password = resources.getString(R.string.login_set_test_credits_password)
+
+                    edit_text_login_email_input.setText(email)
+                    edit_text_login_password.setText(password)
+                }
             }
         }
     }
@@ -47,7 +60,7 @@ class LoginFragment: Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val binding = DataBindingUtil.inflate<FragmentLoginBinding>(inflater, R.layout.fragment_login, container,false)
+        val binding = DataBindingUtil.inflate<FragmentLoginBinding>(inflater, R.layout.fragment_login, container, false)
 
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel::class.java)
         viewModel.stateLiveData.observe(this, stateObserver)
