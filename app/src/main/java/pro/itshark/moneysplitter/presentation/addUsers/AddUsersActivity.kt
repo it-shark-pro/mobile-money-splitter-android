@@ -37,10 +37,10 @@ class AddUsersActivity : AppCompatActivity() {
     private val stateViewModelObserver = Observer<AddUsersViewModel.State> { state ->
         state?.let {
             when (state) {
-                is AddUsersViewModel.State.Success -> adapter.update(state.usersList, viewModel.getSelectedUsers())
+                is AddUsersViewModel.State.Success -> adapter.update(state.usersList, state.selectedUsers)
                 is AddUsersViewModel.State.Error -> Toast.makeText(this, getString(R.string.failed), Toast.LENGTH_SHORT).show()
                 is AddUsersViewModel.State.Confirm -> {
-                    setResult(Activity.RESULT_OK, Intent().putExtra(IntentKey.users, adapter.getSelectedUsersAsArray()))
+                    setResult(Activity.RESULT_OK, Intent().putExtra(IntentKey.users, adapter.getSelectedUsers().values.toTypedArray()))
                     finish()
                 }
             }
@@ -58,7 +58,7 @@ class AddUsersActivity : AppCompatActivity() {
 
         val searchView = search_view
 
-        searchView.setMenuItem(menu?.findItem(R.id.action_search))
+        menu?.findItem(R.id.action_search).let { searchView.setMenuItem(it) }
 
         return true
     }
@@ -69,12 +69,6 @@ class AddUsersActivity : AppCompatActivity() {
         }
 
         return true
-    }
-
-    override fun onPause() {
-        super.onPause()
-
-        viewModel.setSelectedUsers(adapter.getSelectedUsersAsMap())
     }
 
     private fun init() {

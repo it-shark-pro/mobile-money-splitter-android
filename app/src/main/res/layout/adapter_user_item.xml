@@ -29,6 +29,7 @@
             android:ellipsize="end"
             android:singleLine="true"
             android:text="@{@string/full_name(viewModel.user.name, viewModel.user.surname)}"
+            android:textAppearance="@style/TextAppearance.Body1.Primary"
             android:textColor="@color/color_text_primary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/image_view"

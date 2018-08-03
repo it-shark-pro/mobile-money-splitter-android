@@ -17,7 +17,11 @@ class UserItemViewModel(val user: UserModel, isSelected: Boolean) : ViewModel() 
     fun onItemClick(user: UserModel) {
         isSelect.set(!isSelect.get())
 
-        state.value = if (isSelect.get()) State.Added(user) else State.Removed(user)
+        state.value = if (isSelect.get()) {
+            State.Added(user)
+        } else {
+            State.Removed(user)
+        }
     }
 
     sealed class State {

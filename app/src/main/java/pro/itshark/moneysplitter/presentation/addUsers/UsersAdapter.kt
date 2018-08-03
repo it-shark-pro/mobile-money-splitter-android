@@ -6,9 +6,9 @@ import pro.itshark.moneysplitter.R
 import pro.itshark.moneysplitter.common.RecyclerBaseAdapter
 import pro.itshark.moneysplitter.presentation.userProfile.UserModel
 
-class UsersAdapter(private val owner: LifecycleOwner, var items: List<UserModel>) : RecyclerBaseAdapter() {
+class UsersAdapter(private val owner: LifecycleOwner, private var items: List<UserModel>) : RecyclerBaseAdapter() {
 
-    private val selectedUsers: MutableMap<Long, UserModel> = mutableMapOf()
+    private var selectedUsers: MutableMap<Long, UserModel> = mutableMapOf()
 
     private val stateViewModelObserver = Observer<UserItemViewModel.State> { state ->
         state?.let {
@@ -33,14 +33,12 @@ class UsersAdapter(private val owner: LifecycleOwner, var items: List<UserModel>
 
     override fun getItemCount(): Int = items.size
 
-    fun update(usersList: List<UserModel>, selectedUsers: Map<Long, UserModel>) {
+    fun update(usersList: List<UserModel>, selectedUsers: MutableMap<Long, UserModel>) {
         items = usersList.toMutableList()
-        this.selectedUsers.putAll(selectedUsers)
+        this.selectedUsers = selectedUsers
 
         notifyDataSetChanged()
     }
 
-    fun getSelectedUsersAsMap(): Map<Long, UserModel> = selectedUsers
-
-    fun getSelectedUsersAsArray(): Array<UserModel> = selectedUsers.values.toTypedArray()
+    fun getSelectedUsers(): Map<Long, UserModel> = selectedUsers
 }

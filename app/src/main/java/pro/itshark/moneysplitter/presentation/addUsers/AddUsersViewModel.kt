@@ -21,7 +21,7 @@ class AddUsersViewModel
     val isUserListEmpty = ObservableBoolean(false)
     val subject = PublishSubject.create<String>()
 
-    private var usersList = listOf<UserModel>()
+    private var usersList: List<UserModel> = listOf()
     private var selectedUsers: MutableMap<Long, UserModel> = mutableMapOf()
 
     private var email = EMPTY_STRING
@@ -33,12 +33,6 @@ class AddUsersViewModel
         initSubject()
         getUserInfo()
     }
-
-    fun setSelectedUsers(selectedUsers: Map<Long, UserModel>) {
-        this.selectedUsers = selectedUsers.toMutableMap()
-    }
-
-    fun getSelectedUsers(): Map<Long, UserModel> = selectedUsers
 
     fun onConfirmClick() {
         stateViewModel.value = State.Confirm(usersList)
@@ -87,7 +81,7 @@ class AddUsersViewModel
         this.usersList = usersList
 
         isUserListEmpty.set(usersList.isEmpty())
-        stateViewModel.value = State.Success(usersList)
+        stateViewModel.value = State.Success(usersList, selectedUsers)
     }
 
     private fun loadError(e: Throwable) {
@@ -99,7 +93,7 @@ class AddUsersViewModel
 
         data class Default(override val usersList: List<UserModel>) : State()
         data class Loading(override val usersList: List<UserModel>) : State()
-        data class Success(override val usersList: List<UserModel>) : State()
+        data class Success(override val usersList: List<UserModel>, val selectedUsers: MutableMap<Long, UserModel>) : State()
         data class Error(override val usersList: List<UserModel>, val errorMessage: String) : State()
         data class Confirm(override val usersList: List<UserModel>) : State()
     }
