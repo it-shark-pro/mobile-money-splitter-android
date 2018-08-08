@@ -1,4 +1,4 @@
-package pro.itshark.moneysplitter.model.repository.user
+package pro.itshark.moneysplitter.model.repository.users
 
 import android.content.Context
 import io.reactivex.Observable
@@ -10,7 +10,7 @@ import pro.itshark.moneysplitter.common.PreferenceHelper.get
 import pro.itshark.moneysplitter.common.PreferenceHelper.set
 import pro.itshark.moneysplitter.model.api.Api
 
-class UserDownloader(private val context: Context, private val api: Api) : UserRepository {
+class UsersLoader(private val context: Context, private val api: Api) : UsersRepository {
 
     override fun login(userEntry: UserEntry): Single<UserEntry> {
         return api.login(userEntry)
@@ -22,6 +22,7 @@ class UserDownloader(private val context: Context, private val api: Api) : UserR
 
     override fun saveUserInfo(userEntry: UserEntry) {
         val preferences = defaultSharedPreferences(context)
+
         preferences[PreferenceKey.ID] = userEntry.id
         preferences[PreferenceKey.EMAIL] = userEntry.email
         preferences[PreferenceKey.NAME] = userEntry.name
@@ -40,19 +41,21 @@ class UserDownloader(private val context: Context, private val api: Api) : UserR
     }
 
     override fun getUserInfo(): Single<UserEntry> {
-        val prefs = defaultSharedPreferences(context)
+        val preferences = defaultSharedPreferences(context)
 
         return Single.just(UserEntry(
-                prefs[PreferenceKey.ID],
-                prefs[PreferenceKey.EMAIL],
-                prefs[PreferenceKey.NAME],
-                prefs[PreferenceKey.SURNAME],
-                prefs[PreferenceKey.PHONE_NUMBER],
-                prefs[PreferenceKey.CREDIT_CARD_NUMBER],
-                prefs[PreferenceKey.BALANCE],
-                prefs[PreferenceKey.TOKEN],
-                prefs[PreferenceKey.IMAGE_URL],
-                prefs[PreferenceKey.BACKGROUND_IMAGE_URL]
+                preferences[PreferenceKey.ID],
+                preferences[PreferenceKey.EMAIL],
+                preferences[PreferenceKey.NAME],
+                preferences[PreferenceKey.SURNAME],
+                preferences[PreferenceKey.PHONE_NUMBER],
+                preferences[PreferenceKey.CREDIT_CARD_NUMBER],
+                preferences[PreferenceKey.BALANCE],
+                preferences[PreferenceKey.TOKEN],
+                preferences[PreferenceKey.IMAGE_URL],
+                preferences[PreferenceKey.BACKGROUND_IMAGE_URL]
         ))
     }
+
+    override fun searchUsers(value: String): Observable<List<UserEntry>> = api.searchUsers(value)
 }

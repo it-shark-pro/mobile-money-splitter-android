@@ -39,6 +39,10 @@ class NewEventViewModel
         stateLiveData.value = ErrorState(event, e.toString())
     }
 
+    fun addUsersButtonClicked() {
+        stateLiveData.value = AdditionState(event)
+    }
+
     fun onChooseImageClicked() {
         stateLiveData.value = ChoosingImageState(event)
     }

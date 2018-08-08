@@ -28,6 +28,10 @@ android {
     dataBinding {
         enabled = true
     }
+
+    androidExtensions {
+        experimental = true
+    }
 }
 
 dependencies {
@@ -60,8 +64,9 @@ dependencies {
     implementation libraries.glide
     kapt libraries.glideCompiler
 
+    implementation libraries.materialSearchView
+
     testImplementation libraries.jUnit
     androidTestImplementation libraries.testRunner
     androidTestImplementation libraries.testEspresso
-
 }

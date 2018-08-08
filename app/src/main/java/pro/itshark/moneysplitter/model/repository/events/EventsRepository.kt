@@ -9,5 +9,5 @@ interface EventsRepository {
 
     fun createEvent(event: NewEventEntry, email: String, token: String): Single<ResponseBody>
 
-    fun getEvents() : Single<List<EventEntry>>
+    fun getEvents(): Single<List<EventEntry>>
 }

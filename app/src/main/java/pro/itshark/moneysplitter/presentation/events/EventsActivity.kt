@@ -19,7 +19,6 @@ import pro.itshark.moneysplitter.presentation.events.newevent.NewEventActivity
 import pro.itshark.moneysplitter.presentation.userProfile.UserProfileActivity
 import javax.inject.Inject
 
-
 class EventsActivity : AppCompatActivity() {
 
     companion object {
@@ -33,13 +32,13 @@ class EventsActivity : AppCompatActivity() {
 
     private val adapter = EventsAdapter(listOf())
 
-    private lateinit var eventsRecyclerView : RecyclerView
+    private lateinit var eventsRecyclerView: RecyclerView
 
-    private val stateViewModelObserver = Observer<EventsState> {state ->
+    private val stateViewModelObserver = Observer<EventsState> { state ->
         state?.let {
-            when(state) {
+            when (state) {
                 is SuccessState -> adapter.update(state.eventList)
-                is ErrorState -> Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
+                is ErrorState -> Toast.makeText(this, getString(R.string.failed), Toast.LENGTH_SHORT).show()
             }
         }
     }

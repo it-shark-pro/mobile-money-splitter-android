@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!-- Fonts -->
     <style name="TextAppearance.Base.Regular" parent="android:TextAppearance">
         <item name="android:fontFamily">@font/roboto_regular</item>
@@ -118,6 +119,19 @@
 
     <style name="TextAppearance.Button.Accent" parent="TextAppearance.Button.Base">
         <item name="android:textColor">@color/color_text_accent</item>
+    </style>
+
+    <!-- Material Search View -->
+    <style name="MaterialSearchViewStyle">
+        <item name="searchVoiceIcon">@drawable/ic_action_voice_search_inverted</item>
+        <item name="searchCloseIcon">@drawable/ic_action_navigation_close_inverted</item>
+        <item name="searchBackIcon">@drawable/ic_action_navigation_arrow_back_inverted</item>
+        <item name="searchSuggestionIcon">@drawable/ic_suggestion</item>
+        <item name="searchBackground">@color/color_primary_dark</item>
+        <item name="searchSuggestionBackground">@color/color_primary_dark</item>
+        <item name="android:textColor">@color/color_text_primary</item>
+        <item name="android:textColorHint">@color/color_text_primary_secondary</item>
+        <item name="android:hint">@string/search_hint</item>
     </style>
 
 </resources>
