@@ -1,6 +1,7 @@
 package pro.itshark.moneysplitter
 
 const val BASE_URL = "https://moneytransfer.azurewebsites.net/"
+const val EVENT_ID = "event_id"
 
 object Timeout {
     const val connect: Long = 30

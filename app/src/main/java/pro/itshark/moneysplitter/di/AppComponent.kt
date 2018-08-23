@@ -6,7 +6,9 @@ import dagger.Component
 import pro.itshark.moneysplitter.App
 import pro.itshark.moneysplitter.di.modules.*
 import pro.itshark.moneysplitter.presentation.addUsers.AddUsersActivityModule
+import pro.itshark.moneysplitter.domain.events.EventsInteractor
 import pro.itshark.moneysplitter.presentation.events.EventsActivityModule
+import pro.itshark.moneysplitter.presentation.events.details.EventDetailModule
 import pro.itshark.moneysplitter.presentation.events.newevent.NewEventActivityModule
 import pro.itshark.moneysplitter.presentation.regLogin.RegLoginModule
 import pro.itshark.moneysplitter.presentation.regLogin.login.LoginModule
@@ -28,7 +30,9 @@ import javax.inject.Singleton
     (ActionsModule::class),
     (NewEventActivityModule::class),
     (UserProfileActivityModule::class),
-    (AddUsersActivityModule::class)
+    (AddUsersActivityModule::class),
+    (EventDetailModule::class),
+    (DBModule::class)
 ])
 interface AppComponent {
 
@@ -38,8 +42,11 @@ interface AppComponent {
         @BindsInstance
         fun application(app: Application): Builder
 
+        fun setDBModule(dbModule: DBModule): Builder
+
         fun build(): AppComponent
     }
 
     fun inject(app: App)
+    fun inject(app: EventsInteractor)
 }
