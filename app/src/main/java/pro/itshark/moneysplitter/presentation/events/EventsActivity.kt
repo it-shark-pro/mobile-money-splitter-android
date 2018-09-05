@@ -10,16 +10,19 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.widget.Toast
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_events.*
 import pro.itshark.moneysplitter.R
 import pro.itshark.moneysplitter.databinding.ActivityEventsBinding
+import pro.itshark.moneysplitter.presentation.events.details.EventDetailActivity
 import pro.itshark.moneysplitter.presentation.events.newevent.NewEventActivity
 import pro.itshark.moneysplitter.presentation.userProfile.UserProfileActivity
 import javax.inject.Inject
 
-class EventsActivity : AppCompatActivity() {
+
+class EventsActivity : AppCompatActivity(), EventsAdapter.EventsClickListener {
 
     companion object {
         fun start(context: Context) = context.startActivity(Intent(context, EventsActivity::class.java))
@@ -30,7 +33,7 @@ class EventsActivity : AppCompatActivity() {
 
     private lateinit var viewModel: EventsViewModel
 
-    private val adapter = EventsAdapter(listOf())
+    private val adapter = EventsAdapter(listOf(), this)
 
     private lateinit var eventsRecyclerView: RecyclerView
 
@@ -49,7 +52,7 @@ class EventsActivity : AppCompatActivity() {
 
         add_new_event_button.setOnClickListener { NewEventActivity.start(this) }
 
-        button.setOnClickListener({ UserProfileActivity.start(this) })
+        button.setOnClickListener { UserProfileActivity.start(this) }
     }
 
     private fun init() {
@@ -67,6 +70,15 @@ class EventsActivity : AppCompatActivity() {
         eventsRecyclerView.adapter = adapter
 
         viewModel.loadEvents()
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d("Reenter", "activity reentered")
+    }
+
+    override fun onItemClicked(eventId: Long) {
+        EventDetailActivity.start(this, eventId)
     }
 
     override fun onDestroy() {

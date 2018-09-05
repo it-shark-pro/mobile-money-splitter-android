@@ -1,36 +1,44 @@
 package pro.itshark.moneysplitter.model.pojo
 
 import com.google.gson.annotations.SerializedName
+import io.objectbox.annotation.Entity
+import io.objectbox.annotation.Id
+import io.objectbox.annotation.Unique
 
+@Entity
 data class EventEntry(
 
-    @SerializedName("Id")
-    val id: Int,
+        @Id(assignable = true)
+        var dbId: Long = 0,
 
-    @SerializedName("DeadlineDate")
-    val deadLineDate: String,
+        @SerializedName("Id")
+        @Unique
+        var id: Long,
 
-    @SerializedName("IsClosed")
-    val isClosed: Boolean,
+        @SerializedName("DeadlineDate")
+        val deadLineDate: String?,
 
-    @SerializedName("SingleCost")
-    val singleCost: Double,
+        @SerializedName("IsClosed")
+        val isClosed: Boolean?,
 
-    @SerializedName("Title")
-    val title: String,
+        @SerializedName("SingleCost")
+        val singleCost: Double?,
 
-    @SerializedName("Description")
-    val description: String,
+        @SerializedName("Title")
+        val title: String?,
 
-    @SerializedName("CreationDate")
-    val creationDate: String,
+        @SerializedName("Description")
+        val description: String?,
 
-    @SerializedName("Coast")
-    val coast: Int,
+        @SerializedName("CreationDate")
+        val creationDate: String?,
 
-    @SerializedName("OngoingDate")
-    val ongoingDate: String,
+        @SerializedName("Coast")
+        val coast: Int?,
 
-    @SerializedName("ImageUrl")
-    val imageUrl: String
+        @SerializedName("OngoingDate")
+        val ongoingDate: String?,
+
+        @SerializedName("ImageUrl")
+        val imageUrl: String?
 )

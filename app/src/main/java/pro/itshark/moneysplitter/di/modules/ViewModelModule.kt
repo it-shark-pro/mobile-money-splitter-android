@@ -7,10 +7,11 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import pro.itshark.moneysplitter.presentation.addUsers.AddUsersViewModel
 import pro.itshark.moneysplitter.presentation.events.EventsViewModel
+import pro.itshark.moneysplitter.presentation.events.details.EventDetailViewModel
+import pro.itshark.moneysplitter.presentation.events.newevent.NewEventViewModel
 import pro.itshark.moneysplitter.presentation.regLogin.RegLoginViewModel
 import pro.itshark.moneysplitter.presentation.regLogin.login.LoginViewModel
 import pro.itshark.moneysplitter.presentation.regLogin.registration.RegistrationViewModel
-import pro.itshark.moneysplitter.presentation.events.newevent.NewEventViewModel
 import pro.itshark.moneysplitter.presentation.userProfile.UserProfileViewModel
 import javax.inject.Singleton
 import kotlin.reflect.KClass
@@ -56,6 +57,12 @@ abstract class ViewModelModule {
     @Singleton
     @ViewModelKey(RegistrationViewModel::class)
     abstract fun bindRegistrationViewModel(registrationViewModel: RegistrationViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @Singleton
+    @ViewModelKey(EventDetailViewModel::class)
+    abstract fun bindEventDetailViewModel(eventDetailViewModel: EventDetailViewModel): ViewModel
 
     @Binds
     @IntoMap

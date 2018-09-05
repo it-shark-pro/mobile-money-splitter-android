@@ -7,6 +7,7 @@ import pro.itshark.moneysplitter.EMPTY_STRING
 import pro.itshark.moneysplitter.model.pojo.EventEntry
 
 class EventModel(
+        id: Long = 0,
         title: String = EMPTY_STRING,
         description: String = EMPTY_STRING,
         cost: String = EMPTY_STRING,
@@ -15,10 +16,19 @@ class EventModel(
 
     companion object {
         fun create(eventEntry: EventEntry): EventModel = EventModel(
-                eventEntry.title,
-                eventEntry.description,
-                eventEntry.coast.toString()
+                eventEntry.id,
+                eventEntry.title!!,
+                eventEntry.description!!,
+                eventEntry.coast.toString(),
+                eventEntry.imageUrl!!
         )
+    }
+
+    var id: Long = id
+    @Bindable get() = field
+    set(value) {
+        field = value
+        notifyPropertyChanged(BR.id)
     }
 
     var title: String = title
