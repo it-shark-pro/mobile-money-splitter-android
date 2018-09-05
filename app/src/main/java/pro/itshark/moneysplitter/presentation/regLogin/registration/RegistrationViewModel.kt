@@ -5,12 +5,12 @@ import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableField
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import pro.itshark.moneysplitter.domain.user.UserUseCases
+import pro.itshark.moneysplitter.domain.users.UsersUseCases
 import pro.itshark.moneysplitter.model.pojo.UserEntry
 import javax.inject.Inject
 
 class RegistrationViewModel
-@Inject constructor(private val userUseCases: UserUseCases) : ViewModel() {
+@Inject constructor(private val usersUseCases: UsersUseCases): ViewModel() {
     val regCredits = RegistrationModel()
     val stateLiveData = MutableLiveData<RegistrationScreenStates>()
     val isResponseSuccess: ObservableField<Boolean> = ObservableField(true)
@@ -20,7 +20,7 @@ class RegistrationViewModel
         stateLiveData.value = RegistrationRequestSendState()
 
         val credits = UserEntry.create(regCredits)
-        userUseCases.register(credits)
+        usersUseCases.register(credits)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::onRegistrationSuccess, this::onError)

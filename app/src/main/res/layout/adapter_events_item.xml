@@ -16,12 +16,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
+        android:onClick="@{() -> viewModel.openDetailActivity()}"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.title}"
+            android:text="@{viewModel.event.title}"
             android:textAppearance="@style/TextAppearance.Body1.Primary"
             tools:text="Title" />
 
@@ -29,9 +30,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="@{viewModel.description}"
+            android:text="@{viewModel.event.description}"
             android:textAppearance="@style/TextAppearance.Body1.PrimarySecondary"
-            android:visibility="@{!TextUtils.isEmpty(viewModel.description) ? View.VISIBLE : View.GONE}"
+            android:visibility="@{!TextUtils.isEmpty(viewModel.event.description) ? View.VISIBLE : View.GONE}"
             tools:text="Description" />
 
         <View

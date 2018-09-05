@@ -9,6 +9,7 @@ import dagger.android.HasActivityInjector
 import dagger.android.support.HasSupportFragmentInjector
 import pro.itshark.moneysplitter.di.AppComponent
 import pro.itshark.moneysplitter.di.DaggerAppComponent
+import pro.itshark.moneysplitter.di.modules.DBModule
 import javax.inject.Inject
 
 class App : Application(), HasActivityInjector, HasSupportFragmentInjector {
@@ -27,6 +28,7 @@ class App : Application(), HasActivityInjector, HasSupportFragmentInjector {
 
         component = DaggerAppComponent.builder()
                 .application(this)
+                .setDBModule(DBModule(this))
                 .build()
 
         component.inject(this)

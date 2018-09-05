@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pro.itshark.moneysplitter">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".App"
@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/MoneySplitterTheme">
+
         <activity android:name=".presentation.regLogin.RegLoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,9 +22,16 @@
         </activity>
 
         <activity android:name=".presentation.events.EventsActivity"/>
+
         <activity android:name=".presentation.userProfile.UserProfileActivity" />
 
         <activity android:name=".presentation.events.newevent.NewEventActivity" />
+
+        <activity
+            android:name=".presentation.addUsers.AddUsersActivity"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity android:name=".presentation.events.details.EventDetailActivity" />
     </application>
 
 </manifest>

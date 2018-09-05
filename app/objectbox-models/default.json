@@ -1,0 +1,71 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:7307052736475626318",
+      "lastPropertyId": "11:4238605111951329002",
+      "name": "EventEntry",
+      "properties": [
+        {
+          "id": "1:6027893537025600681",
+          "indexId": "1:6426565781801505268",
+          "name": "id"
+        },
+        {
+          "id": "2:8998297459806059073",
+          "name": "deadLineDate"
+        },
+        {
+          "id": "3:2548858189337689376",
+          "name": "isClosed"
+        },
+        {
+          "id": "4:8144215184164652948",
+          "name": "singleCost"
+        },
+        {
+          "id": "5:4538512269855382339",
+          "name": "title"
+        },
+        {
+          "id": "6:391738230334565079",
+          "name": "description"
+        },
+        {
+          "id": "7:12574909741327453",
+          "name": "creationDate"
+        },
+        {
+          "id": "8:6020660829803773251",
+          "name": "coast"
+        },
+        {
+          "id": "9:752419934046233744",
+          "name": "ongoingDate"
+        },
+        {
+          "id": "10:3981415834406967158",
+          "name": "imageUrl"
+        },
+        {
+          "id": "11:4238605111951329002",
+          "name": "dbId"
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "1:7307052736475626318",
+  "lastIndexId": "1:6426565781801505268",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 4,
+  "modelVersionParserMinimum": 4,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}

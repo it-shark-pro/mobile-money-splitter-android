@@ -9,4 +9,6 @@ interface EventsUseCases {
     fun createEvent(event: EventModel, email: String, token: String): Single<ResponseBody>
 
     fun getEvents() : Single<List<EventModel>>
+
+    fun getEvent(eventId: Long): EventModel
 }

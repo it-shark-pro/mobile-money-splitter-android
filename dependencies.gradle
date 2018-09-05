@@ -7,7 +7,7 @@ ext.versions = [
         targetSdk              : 27,
         compileSdk             : 27,
 
-        gradle                 : '3.1.2',
+        gradle                 : '3.1.3',
         kotlin                 : '1.2.41',
 
         architecture           : '1.1.1',
@@ -28,6 +28,10 @@ ext.versions = [
         rxJava                 : '2.1.13',
         rxAndroid              : '2.0.2',
 
+        objectBox              : '2.0.0',
+
+        materialSearchView     : '1.4.0',
+
         jUnit                  : '4.12',
         testRunner             : '1.0.2',
         testEspresso           : '3.0.2',
@@ -36,6 +40,7 @@ ext.versions = [
 ext.gradlePlugins = [
         gradleVersion           : "com.android.tools.build:gradle:$versions.gradle",
         kotlinVersion           : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin",
+        objectBox               : "io.objectbox:objectbox-gradle-plugin:$versions.objectBox",
 ]
 
 ext.libraries = [
@@ -67,9 +72,12 @@ ext.libraries = [
         rxJava                  : "io.reactivex.rxjava2:rxjava:$versions.rxJava",
         rxAndroid               : "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid",
 
+        objectBoxAndroid        : "io.objectbox:objectbox-android:$versions.objectBox",
+        objectBoxKotlin         : "io.objectbox:objectbox-kotlin:$versions.objectBox",
+
+        materialSearchView      : "com.miguelcatalan:materialsearchview:$versions.materialSearchView",
+
         jUnit                   : "junit:junit:$versions.jUnit",
         testRunner              : "com.android.support.test:runner:$versions.testRunner",
-        testEspresso            : "com.android.support.test.espresso:espresso-core:$versions.testEspresso",
-
-
+        testEspresso            : "com.android.support.test.espresso:espresso-core:$versions.testEspresso"
 ]

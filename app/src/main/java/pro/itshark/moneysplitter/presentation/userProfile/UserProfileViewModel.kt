@@ -3,20 +3,20 @@ package pro.itshark.moneysplitter.presentation.userProfile
 import android.arch.lifecycle.ViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import pro.itshark.moneysplitter.domain.user.UserUseCases
+import pro.itshark.moneysplitter.domain.users.UsersUseCases
 import javax.inject.Inject
 
 class UserProfileViewModel
-@Inject constructor(private val userUseCases: UserUseCases) : ViewModel() {
+@Inject constructor(private val usersUseCases: UsersUseCases) : ViewModel() {
 
-    var user = UserModel()
+    val user = UserModel()
 
     init {
         getUserInfo()
     }
 
     fun getUserInfo() {
-        userUseCases.getUserInfo()
+        usersUseCases.getUserInfo()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe({ user ->

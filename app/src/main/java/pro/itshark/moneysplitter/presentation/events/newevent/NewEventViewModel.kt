@@ -24,7 +24,7 @@ class NewEventViewModel
 
     fun createButtonClicked() {
         stateLiveData.value = SendingState(event)
-        eventsUseCases.createEvent(event, "sasuke_kill_konoha@yandex.ru", "7f66310c-9aa4-44aa-9d03-98bd9ad4c4d4")
+        eventsUseCases.createEvent(event, "sasuke_kill_konoha@yandex.ru", "01273862-1c15-416c-a5ad-1243d4fdde86")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::onLoadingSuccess, this::onLoadingFailure)
@@ -37,6 +37,10 @@ class NewEventViewModel
     private fun onLoadingFailure(e: Throwable) {
         Log.e("Sending error", e.toString())
         stateLiveData.value = ErrorState(event, e.toString())
+    }
+
+    fun addUsersButtonClicked() {
+        stateLiveData.value = AdditionState(event)
     }
 
     fun onChooseImageClicked() {
